@@ -1,0 +1,3 @@
+BITMAP,link,link.png, 32, 32, 3, 4, 12
+
+ANIM,spriteAnimation,spriteAnimation.txt

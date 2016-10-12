@@ -1,0 +1,24 @@
+SwinGame Animation #v1
+
+//Link standing still: down, left, up, right 
+f:0,0,1,
+f:1,3,1,
+f:2,6,1,
+f:3,9,1,
+
+//Link moving: down, left, up, right
+m:[4,5],[0,1],6,4
+m:[6,7],[3,4],6,6
+m:[8,9],[6,7],6,8
+m:[10,11],[9,10],6,10
+
+//identifiers
+i:linkDown,0
+i:linkLeft,1
+i:linkUp,2
+i:linkRight,3
+
+i:linkDownMove,4
+i:linkLeftMove,6
+i:linkUpMove,8
+i:linkRightMove,10

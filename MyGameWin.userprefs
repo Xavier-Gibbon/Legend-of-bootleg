@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{A9DCAC72-BC77-4C33-BE70-BBFD31D7C798}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug-Windows|x86" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\Objects\Player.cs">
+    <Files>
+      <File FileName="src\GameMain.cs" Line="13" Column="42" />
+      <File FileName="src\Objects\Player.cs" Line="2" Column="19" />
+      <File FileName="src\Objects\GameObject.cs" Line="53" Column="5" />
+      <File FileName="src\Enumerations\Direction.cs" Line="10" Column="7" />
+      <File FileName="src\Objects\Item.cs" Line="7" Column="4" />
+      <File FileName="src\Objects\Screen.cs" Line="34" Column="36" />
+      <File FileName="Utilities.cs" Line="24" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.MyGameWin PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
