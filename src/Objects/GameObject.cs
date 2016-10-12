@@ -17,22 +17,39 @@ namespace MyGame
 		public GameObject (string bmp, string anim, Direction direct, float x, float y)
 			: this (SwinGame.BitmapNamed (bmp), SwinGame.AnimationScriptNamed (anim), direct, x, y) { }
 
+		/// <summary>
+		/// Moves the object in the specified direction
+		/// </summary>
+		/// <param name="direct">The direction the object will move in</param>
 		public abstract void Move (Direction direct);
 
+		/// <summary>
+		/// Draws the object
+		/// </summary>
 		public void Draw ()
 		{
 			_sprite.Draw ();
 		}
 
-		public void PerformAction ()
-		{
-		}
+		/// <summary>
+		/// Performs the action.
+		/// </summary>
+		public abstract void PerformAction ();
 
+		/// <summary>
+		/// Checks if the object has collided with another object
+		/// </summary>
+		/// <returns><c>true</c>, if it has collided, <c>false</c> if it has not.</returns>
+		/// <param name="obj">Object.</param>
 		public bool CollidedWith (GameObject obj)
 		{
 			return false;
 		}
 
+
+		/// <summary>
+		/// Updates the object
+		/// </summary>
 		public virtual void Update ()
 		{
 			string anim = DetermineNextAnimation ();
