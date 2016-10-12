@@ -11,11 +11,16 @@ namespace MyGame
 			_health = 6;
 		}
 
-		//Moves the player
+		/// <summary>
+		/// Moves the player in the specified direction
+		/// </summary>
+		/// <param name="direct">The direction the player will move</param>
 		public override void Move (Direction direct)
 		{
 			Move (direct, 3);
 		}
+
+		/// <param name="speed">The speed of which the player moves</param>
 		public void Move (Direction direct, int speed)
 		{
 			Vector tempVector = new Vector ();
@@ -40,6 +45,18 @@ namespace MyGame
 			_sprite.Move ();
 		}
 
+		/// <summary>
+		/// Will use a specified item
+		/// </summary>
+		public override void PerformAction ()
+		{
+			throw new NotImplementedException ();
+		}
+
+		/// <summary>
+		/// Creates a string to create an animation
+		/// </summary>
+		/// <returns>The next animation name</returns>
 		protected override string DetermineNextAnimation ()
 		{
 			string result = "link";
@@ -48,16 +65,6 @@ namespace MyGame
 				result += "Move";
 			}
 			return result;
-		}
-
-		public Screen CurrentScreen {
-			get {
-				return _currentScreen;
-			}
-
-			set {
-				_currentScreen = value;
-			}
 		}
 	}
 }

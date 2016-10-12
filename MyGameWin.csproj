@@ -39,6 +39,7 @@
     <Folder Include="src\" />
     <Folder Include="Resources\" />
     <Folder Include="src\Objects\" />
+    <Folder Include="src\UnitTests\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Enumerations\Direction.cs" />
@@ -47,18 +48,23 @@
     <Compile Include="src\Objects\GameObject.cs" />
     <Compile Include="src\Objects\Item.cs" />
     <Compile Include="Utilities.cs" />
+    <Compile Include="src\UnitTests\TestPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">
       <HintPath>lib\SwinGame.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\**\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <WinLibs Include="lib\win32\*.dll" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Target Name="CopyLibsToOut">
     <Copy SourceFiles="@(WinLibs)" DestinationFolder="$(OutDir)" />

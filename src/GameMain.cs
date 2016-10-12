@@ -23,17 +23,21 @@ namespace MyGame
 				ProcessEvents (myPlayer);
 				UpdateGame (myPlayer);
 				DrawGame (myPlayer);
-
-				//Clear the screen and draw the framerate
-
             }
         }
 
+		/// <summary>
+		/// Loads the resources.
+		/// </summary>
 		public static void LoadResources ()
 		{
 			SwinGame.LoadResourceBundle ("animatedSprites.txt");
 		}
 
+		/// <summary>
+		/// Processes the players input and performs actions based on that.
+		/// </summary>
+		/// <param name="myPlayer">The player.</param>
 		public static void ProcessEvents (Player myPlayer)
 		{
 			SwinGame.ProcessEvents ();
@@ -54,11 +58,19 @@ namespace MyGame
 			myPlayer.Move (tempDirect);
 		}
 
+		/// <summary>
+		/// Updates the game.
+		/// </summary>
+		/// <param name="myPlayer">The player.</param>
 		public static void UpdateGame (Player myPlayer)
 		{
 			myPlayer.Update();
 		}
 
+		/// <summary>
+		/// Draws the game.
+		/// </summary>
+		/// <param name="myPlayer">The player.</param>
 		public static void DrawGame (Player myPlayer)
 		{
 			SwinGame.ClearScreen (Color.White);

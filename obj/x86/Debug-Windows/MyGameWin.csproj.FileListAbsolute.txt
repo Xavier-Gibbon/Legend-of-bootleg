@@ -33,3 +33,5 @@ C:\COS20007\Game\The Legend of Bootleg\obj\x86\Debug-Windows\MyGame.pdb
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\link.png
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\animations\spriteAnimation.txt
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\bundles\animatedSprites.txt
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\nunit.framework.dll
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\nunit.framework.xml
