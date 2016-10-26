@@ -11,6 +11,7 @@ namespace MyGame
 		public void SetUp ()
 		{
 			myPlayer = new Player (400, 400);
+			SwinGame.LoadResourceBundle ("animatedSprites.txt");
 		}
 
 		[TearDown]

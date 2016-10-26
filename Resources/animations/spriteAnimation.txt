@@ -12,6 +12,13 @@ m:[6,7],[3,4],6,6
 m:[8,9],[6,7],6,8
 m:[10,11],[9,10],6,10
 
+//Link Attacking: down, left, up, right
+f:12,2,1,
+f:13,5,1,
+f:14,8,1,
+f:15,11,1,
+
+
 //identifiers
 i:linkDown,0
 i:linkLeft,1
@@ -22,3 +29,8 @@ i:linkDownMove,4
 i:linkLeftMove,6
 i:linkUpMove,8
 i:linkRightMove,10
+
+i:linkDownAttack,12
+i:linkLeftAttack,13
+i:linkUpAttack,14
+i:lnkRightAttack,15

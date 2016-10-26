@@ -11,7 +11,13 @@ namespace MyGame
 			LoadResources ();
 			//Initialize objects
 			Player myPlayer = new Player (400, 400);
+			Menu myMenu = new Menu ();
 
+			Sword mySword = new Sword ("sword");
+			Potion myPotion = new Potion ("potion");
+
+			myPlayer.Inventory.AddItem (mySword);
+			myPlayer.Inventory.AddItem (myPotion);
             //Open the game window
             SwinGame.OpenGraphicsWindow("GameMain", 800, 600);
 
@@ -20,7 +26,7 @@ namespace MyGame
             {
 				//Fetch the next batch of UI interaction
 			
-				ProcessEvents (myPlayer);
+				ProcessEvents (myPlayer, myMenu);
 				UpdateGame (myPlayer);
 				DrawGame (myPlayer);
             }
@@ -32,16 +38,25 @@ namespace MyGame
 		public static void LoadResources ()
 		{
 			SwinGame.LoadResourceBundle ("animatedSprites.txt");
+			SwinGame.LoadBitmapNamed("arrow", "arrow.png");
+			SwinGame.LoadBitmapNamed ("sword", "sword.png");
+			SwinGame.LoadBitmapNamed ("potion", "potion.png");
+			SwinGame.LoadBitmapNamed ("potionUsed", "potionUsed.png");
+			SwinGame.LoadFontNamed ("emulogic", "emulogic.ttf", 16);
 		}
 
 		/// <summary>
 		/// Processes the players input and performs actions based on that.
 		/// </summary>
 		/// <param name="myPlayer">The player.</param>
-		public static void ProcessEvents (Player myPlayer)
+		public static void ProcessEvents (Player myPlayer, Menu myMenu)
 		{
 			SwinGame.ProcessEvents ();
 			Direction tempDirect;
+
+			if (SwinGame.KeyTyped (KeyCode.EscapeKey)) {
+				myMenu.GameMenu (myPlayer);
+			}
 
 			if (SwinGame.KeyDown (KeyCode.LeftKey)) {
 				tempDirect = Direction.Left;
@@ -53,6 +68,10 @@ namespace MyGame
 				tempDirect = Direction.Down;
 			} else {
 				tempDirect = Direction.None;
+			}
+
+			if (SwinGame.KeyDown (KeyCode.ZKey)) {
+				myPlayer.UseFirstItem ();
 			}
 
 			myPlayer.Move (tempDirect);

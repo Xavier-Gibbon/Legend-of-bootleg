@@ -49,6 +49,14 @@
     <Compile Include="src\Objects\Item.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="src\UnitTests\TestPlayer.cs" />
+    <Compile Include="src\Objects\Inventory.cs" />
+    <Compile Include="src\Objects\MenuItem.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="src\Objects\Sword.cs" />
+    <Compile Include="src\Objects\ICanBeUsed.cs" />
+    <Compile Include="src\Enumerations\SpriteState.cs" />
+    <Compile Include="src\Objects\Potion.cs" />
+    <Compile Include="src\UnitTests\TestItems.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">

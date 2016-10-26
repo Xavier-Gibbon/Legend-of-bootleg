@@ -35,3 +35,8 @@ C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\animations\spriteAnim
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\bundles\animatedSprites.txt
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\nunit.framework.dll
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\nunit.framework.xml
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\fonts\emulogic.ttf
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\arrow.png
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\sword.png
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\potion.png
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\potionUsed.png
