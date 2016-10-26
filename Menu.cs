@@ -94,11 +94,15 @@ namespace MyGame
 
 			_exit = SwinGame.KeyTyped (KeyCode.EscapeKey);
 
-			if (SwinGame.KeyTyped (KeyCode.ReturnKey)) {
+			if (SwinGame.KeyTyped (KeyCode.ZKey) || SwinGame.KeyTyped (KeyCode.XKey)) {
 				ICanBeUsed theItem = (ICanBeUsed)p.Inventory.FetchItem (_option);
 
 				if (theItem != null) {
-					p.EquipFirstItem (theItem);
+					if (SwinGame.KeyTyped (KeyCode.ZKey)) {
+						p.EquipFirstItem (theItem);
+					} else {
+						p.EquipSecondItem (theItem);
+					}
 				}
 			} else if (SwinGame.KeyTyped (KeyCode.LeftKey)) {
 				_option--;

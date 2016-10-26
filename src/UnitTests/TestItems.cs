@@ -49,5 +49,14 @@ namespace MyGame
 
 			Assert.AreEqual (SpriteState.Attacking, myPlayer.State, "Test to see if the player can use equipped items");
 		}
+
+		[Test]
+		public void TestPlayerUse2 ()
+		{
+			myPlayer.EquipSecondItem (myPotion);
+			myPlayer.UseSecondItem ();
+
+			Assert.AreEqual (10, myPlayer.CurrentHealth, "Test to see if the player can use equipped items in the second slot");
+		}
 	}
 }

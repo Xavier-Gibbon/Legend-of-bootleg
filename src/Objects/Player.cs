@@ -84,6 +84,9 @@ namespace MyGame
 			}
 		}
 
+		/// <summary>
+		/// Uses the second equipped item.
+		/// </summary>
 		public void UseSecondItem ()
 		{
 			if (_equippedItem2 != null) {
@@ -98,6 +101,11 @@ namespace MyGame
 		public void EquipFirstItem (ICanBeUsed theItem)
 		{
 			_equippedItem1 = theItem;
+		}
+
+		public void EquipSecondItem (ICanBeUsed theItem)
+		{
+			_equippedItem2 = theItem;
 		}
 
 		public void IncreaseHealth (int healthIncrement)

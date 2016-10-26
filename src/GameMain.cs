@@ -70,8 +70,10 @@ namespace MyGame
 				tempDirect = Direction.None;
 			}
 
-			if (SwinGame.KeyDown (KeyCode.ZKey)) {
+			if (SwinGame.KeyTyped (KeyCode.ZKey)) {
 				myPlayer.UseFirstItem ();
+			} else if (SwinGame.KeyTyped (KeyCode.XKey)) {
+				myPlayer.UseSecondItem ();
 			}
 
 			myPlayer.Move (tempDirect);
