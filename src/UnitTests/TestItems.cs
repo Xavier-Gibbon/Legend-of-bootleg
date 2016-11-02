@@ -5,6 +5,7 @@ namespace MyGame
 	[TestFixture]
 	public class TestItems
 	{
+		Screen dumby;
 		Player myPlayer;
 		Sword mySword;
 		Potion myPotion;
@@ -12,7 +13,8 @@ namespace MyGame
 		[SetUp]
 		public void SetUp ()
 		{
-			myPlayer = new Player (0, 0, 6, 10, SpriteState.Stationary, "link");
+			dumby = new Screen (0, 0);
+			myPlayer = new Player (0, 0, 6, 10, SpriteState.Stationary, "link", dumby);
 			mySword = new Sword("sword");
 			myPotion = new Potion ("potion");
 		}

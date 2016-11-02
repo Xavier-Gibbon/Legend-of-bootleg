@@ -7,10 +7,12 @@ namespace MyGame
 	public class TestPlayer
 	{
 		Player myPlayer;
+		Screen dumby;
 		[SetUp]
 		public void SetUp ()
 		{
-			myPlayer = new Player (400, 400);
+			dumby = new Screen (0, 0);
+			myPlayer = new Player (400, 400, dumby);
 			SwinGame.LoadResourceBundle ("animatedSprites.txt");
 		}
 

@@ -1,3 +1,5 @@
 BITMAP,link,link.png, 32, 32, 3, 4, 12
+BITMAP,swordProjectile,swordProjectile.png, 32, 32, 2, 2, 4
+BITMAP,arrowProjectile,arrowProjectile.png, 32, 32, 2, 2, 4
 
 ANIM,spriteAnimation,spriteAnimation.txt

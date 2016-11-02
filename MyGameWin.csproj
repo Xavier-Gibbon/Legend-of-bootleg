@@ -40,6 +40,8 @@
     <Folder Include="Resources\" />
     <Folder Include="src\Objects\" />
     <Folder Include="src\UnitTests\" />
+    <Folder Include="src\Objects\Items\" />
+    <Folder Include="src\Objects\Projectiles\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Enumerations\Direction.cs" />
@@ -52,11 +54,16 @@
     <Compile Include="src\Objects\Inventory.cs" />
     <Compile Include="src\Objects\MenuItem.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="src\Objects\Sword.cs" />
     <Compile Include="src\Objects\ICanBeUsed.cs" />
     <Compile Include="src\Enumerations\SpriteState.cs" />
-    <Compile Include="src\Objects\Potion.cs" />
     <Compile Include="src\UnitTests\TestItems.cs" />
+    <Compile Include="src\Objects\Projectile.cs" />
+    <Compile Include="Screen.cs" />
+    <Compile Include="src\Objects\Items\Bow.cs" />
+    <Compile Include="src\Objects\Items\Potion.cs" />
+    <Compile Include="src\Objects\Items\Sword.cs" />
+    <Compile Include="src\Objects\Projectiles\SwordProjectile.cs" />
+    <Compile Include="src\Objects\Projectiles\ArrowProjectile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">

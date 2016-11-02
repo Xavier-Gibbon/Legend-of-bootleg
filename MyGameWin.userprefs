@@ -2,24 +2,24 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug-Windows|x86" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\COS20007\Game\The Legend of Bootleg\Screen.cs" line="118" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\UnitTests\TestPlayer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\Objects\Items\Sword.cs">
     <Files>
-      <File FileName="src\Objects\Sword.cs" Line="18" Column="1" />
-      <File FileName="src\Objects\ICanBeUsed.cs" Line="6" Column="21" />
-      <File FileName="src\Objects\Item.cs" Line="11" Column="36" />
-      <File FileName="src\Objects\MenuItem.cs" Line="19" Column="4" />
-      <File FileName="Menu.cs" Line="118" Column="5" />
-      <File FileName="src\Enumerations\SpriteState.cs" Line="5" Column="66" />
-      <File FileName="src\Enumerations\Direction.cs" Line="1" Column="1" />
-      <File FileName="src\Objects\Player.cs" Line="100" Column="18" />
-      <File FileName="src\Objects\GameObject.cs" Line="17" Column="10" />
-      <File FileName="src\GameMain.cs" Line="46" Column="4" />
-      <File FileName="src\Objects\Inventory.cs" Line="16" Column="1" />
-      <File FileName="src\Objects\Potion.cs" Line="18" Column="12" />
-      <File FileName="src\UnitTests\TestItems.cs" Line="51" Column="4" />
-      <File FileName="src\UnitTests\TestPlayer.cs" Line="19" Column="19" />
+      <File FileName="src\Objects\GameObject.cs" Line="87" Column="25" />
+      <File FileName="src\Objects\Projectile.cs" Line="22" Column="33" />
+      <File FileName="src\Objects\Player.cs" Line="21" Column="1" />
+      <File FileName="Screen.cs" Line="34" Column="23" />
+      <File FileName="src\GameMain.cs" Line="26" Column="39" />
+      <File FileName="src\UnitTests\TestPlayer.cs" Line="14" Column="28" />
+      <File FileName="src\UnitTests\TestItems.cs" Line="16" Column="28" />
+      <File FileName="src\Objects\Projectiles\ArrowProjectile.cs" Line="6" Column="27" />
+      <File FileName="src\Objects\Projectiles\SwordProjectile.cs" Line="11" Column="22" />
+      <File FileName="src\Objects\Items\Bow.cs" Line="33" Column="37" />
+      <File FileName="src\Objects\Items\Sword.cs" Line="36" Column="84" />
+      <File FileName="src\Objects\Item.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.MyGameWin PreferredExecutionTarget="MonoDevelop.Default" />

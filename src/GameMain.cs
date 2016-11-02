@@ -10,13 +10,20 @@ namespace MyGame
 			//Load the resouces
 			LoadResources ();
 			//Initialize objects
-			Player myPlayer = new Player (400, 400);
+			Screen myScreen = new Screen (0, 0);
+
+			Player myPlayer = new Player (400, 400, myScreen);
 			Menu myMenu = new Menu ();
 
 			Sword mySword = new Sword ("sword");
+			Bow myBow = new Bow ();
 			Potion myPotion = new Potion ("potion");
 
+			myPlayer.CurrentScreen = myScreen;
+			myScreen.AddObject (myPlayer);
+
 			myPlayer.Inventory.AddItem (mySword);
+			myPlayer.Inventory.AddItem (myBow);
 			myPlayer.Inventory.AddItem (myPotion);
             //Open the game window
             SwinGame.OpenGraphicsWindow("GameMain", 800, 600);
@@ -40,6 +47,7 @@ namespace MyGame
 			SwinGame.LoadResourceBundle ("animatedSprites.txt");
 			SwinGame.LoadBitmapNamed("arrow", "arrow.png");
 			SwinGame.LoadBitmapNamed ("sword", "sword.png");
+			SwinGame.LoadBitmapNamed ("bow", "bow.png");
 			SwinGame.LoadBitmapNamed ("potion", "potion.png");
 			SwinGame.LoadBitmapNamed ("potionUsed", "potionUsed.png");
 			SwinGame.LoadFontNamed ("emulogic", "emulogic.ttf", 16);
@@ -85,7 +93,7 @@ namespace MyGame
 		/// <param name="myPlayer">The player.</param>
 		public static void UpdateGame (Player myPlayer)
 		{
-			myPlayer.Update();
+			myPlayer.CurrentScreen.UpdateObjects();
 		}
 
 		/// <summary>
@@ -97,7 +105,7 @@ namespace MyGame
 			SwinGame.ClearScreen (Color.White);
 			SwinGame.DrawFramerate (0, 0);
 
-			myPlayer.Draw ();
+			myPlayer.CurrentScreen.DrawObjects ();
 
 			SwinGame.RefreshScreen (60);
 		}

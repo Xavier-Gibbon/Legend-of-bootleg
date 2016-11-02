@@ -9,70 +9,18 @@ namespace MyGame
 		private Inventory _inventory = new Inventory();
 		private ICanBeUsed _equippedItem1;
 		private ICanBeUsed _equippedItem2;
-		private SpriteState _state;
+		private Screen _currentScreen;
+		private Timer _spriteTimer = new Timer ();
 
-		public Player (float x, float y, int currentHealth, int maxHealth, SpriteState state, string bitmapName) : base (bitmapName, "spriteAnimation", Direction.Up, x, y)
+		public Player (float x, float y, int currentHealth, int maxHealth, SpriteState state, string bitmapName, Screen firstScreen) : base (bitmapName, "spriteAnimation", Direction.Up, x, y, 3)
 		{
 			_maxHealth = maxHealth;
 			_currentHealth = currentHealth;
 			_state = state;
+			_currentScreen = firstScreen;
 		}
 
-		public Player (float x, float y) : this (x, y, 6, 6, SpriteState.Stationary, "link") { }
-
-		/// <summary>
-		/// Moves the player in the specified direction
-		/// </summary>
-		/// <param name="direct">The direction the player will move</param>
-		public override void Move (Direction direct)
-		{
-			Move (direct, 3);
-		}
-
-		/// <param name="speed">The speed of which the player moves</param>
-		public void Move (Direction direct, int speed)
-		{
-			if (_state != SpriteState.Attacking) 
-			{
-				Vector tempVector = new Vector ();
-				tempVector.X = 0;
-				tempVector.Y = 0;
-
-				switch (direct) {
-				case Direction.Up:
-					tempVector.Y = -speed;
-					break;
-				case Direction.Down:
-					tempVector.Y = speed;
-					break;
-				case Direction.Left:
-					tempVector.X = -speed;
-					break;
-				case Direction.Right:
-					tempVector.X = speed;
-					break;
-				}
-
-				_sprite.Velocity = tempVector;
-
-				if (direct != Direction.None) {
-					_direct = direct;
-					_state = SpriteState.Moving;
-				} else {
-					_state = SpriteState.Stationary;
-				}
-
-				_sprite.Move ();
-			}
-		}
-
-		/// <summary>
-		/// Will use a specified item
-		/// </summary>
-		public override void PerformAction ()
-		{
-			throw new NotImplementedException ();
-		}
+		public Player (float x, float y, Screen firstScreen) : this (x, y, 6, 6, SpriteState.Stationary, "link", firstScreen) { }
 
 		/// <summary>
 		/// Uses the first equipped item
@@ -103,11 +51,19 @@ namespace MyGame
 			_equippedItem1 = theItem;
 		}
 
+		/// <summary>
+		/// Equips the second item.
+		/// </summary>
+		/// <param name="theItem">The item.</param>
 		public void EquipSecondItem (ICanBeUsed theItem)
 		{
 			_equippedItem2 = theItem;
 		}
 
+		/// <summary>
+		/// Increases the players health.
+		/// </summary>
+		/// <param name="healthIncrement">Amount of health gained.</param>
 		public void IncreaseHealth (int healthIncrement)
 		{
 			_currentHealth += healthIncrement;
@@ -116,6 +72,10 @@ namespace MyGame
 			}
 		}
 
+		/// <summary>
+		/// Decreases the players health.
+		/// </summary>
+		/// <param name="damage">Amount of damage.</param>
 		public void DecreaseHealth (int damage)
 		{
 			_currentHealth -= damage;
@@ -124,9 +84,26 @@ namespace MyGame
 			}
 		}
 
+		/// <summary>
+		/// Increases the players max health.
+		/// </summary>
+		/// <param name="healthIncrement">Amount of max health gained.</param>
 		public void IncreaseMaxHealth (int healthIncrement)
 		{
 			_maxHealth += healthIncrement;
+		}
+
+		public override void Update ()
+		{
+			base.Update ();
+			if (_sprite.AnimationHasEnded) {
+				if (_state == SpriteState.Attacking) _state = SpriteState.Stationary;
+			}
+		}
+
+		private void CheckTimers ()
+		{
+			
 		}
 
 		/// <summary>
@@ -151,30 +128,47 @@ namespace MyGame
 		}
 
 
-
+		/// <summary>
+		/// Gets the players inventory.
+		/// </summary>
+		/// <value>The players inventory.</value>
 		public Inventory Inventory {
 			get {
 				return _inventory;
 			}
-
-			set {
-				_inventory = value;
-			}
 		}
 
-		public SpriteState State {
-			get {
-				return _state;
-			}
-
-			set {
-				_state = value;
-			}
-		}
-
+		/// <summary>
+		/// Gets the players current health.
+		/// </summary>
+		/// <value>The players current health.</value>
 		public int CurrentHealth {
 			get {
 				return _currentHealth;
+			}
+		}
+
+		/// <summary>
+		/// Gets a value indicating whether this player has full health.
+		/// </summary>
+		/// <value><c>true</c> if full health; otherwise, <c>false</c>.</value>
+		public bool FullHealth {
+			get {
+				return _currentHealth == _maxHealth;
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the players current screen.
+		/// </summary>
+		/// <value>The players current screen.</value>
+		public Screen CurrentScreen {
+			get {
+				return _currentScreen;
+			}
+
+			set {
+				_currentScreen = value;
 			}
 		}
 	}
