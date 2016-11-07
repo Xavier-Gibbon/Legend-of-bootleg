@@ -43,3 +43,7 @@ C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\potionUsed.png
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\swordProjectile.png
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\arrowProjectile.png
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\bow.png
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\heart.png
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\rupeeBlue.png
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\rupeeGreen.png
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\rupeeRed.png

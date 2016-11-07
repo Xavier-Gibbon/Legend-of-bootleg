@@ -6,21 +6,24 @@ namespace MyGame
 	{
 		private int _maxHealth;
 		private int _currentHealth;
+		private int _rupeeCount;
 		private Inventory _inventory = new Inventory();
 		private ICanBeUsed _equippedItem1;
 		private ICanBeUsed _equippedItem2;
 		private Screen _currentScreen;
 		private Timer _spriteTimer = new Timer ();
 
-		public Player (float x, float y, int currentHealth, int maxHealth, SpriteState state, string bitmapName, Screen firstScreen) : base (bitmapName, "spriteAnimation", Direction.Up, x, y, 3)
+		public Player (float x, float y, int currentHealth, int maxHealth, SpriteState state, string bitmapName, Screen firstScreen, int rupeeCount) 
+			: base (bitmapName, "spriteAnimation", Direction.Up, x, y, 3)
 		{
 			_maxHealth = maxHealth;
 			_currentHealth = currentHealth;
 			_state = state;
 			_currentScreen = firstScreen;
+			_rupeeCount = rupeeCount;
 		}
 
-		public Player (float x, float y, Screen firstScreen) : this (x, y, 6, 6, SpriteState.Stationary, "link", firstScreen) { }
+		public Player (float x, float y, Screen firstScreen) : this (x, y, 6, 6, SpriteState.Stationary, "link", firstScreen, 0) { }
 
 		/// <summary>
 		/// Uses the first equipped item
@@ -169,6 +172,16 @@ namespace MyGame
 
 			set {
 				_currentScreen = value;
+			}
+		}
+
+		public int RupeeCount {
+			get {
+				return _rupeeCount;
+			}
+
+			set {
+				_rupeeCount = value;
 			}
 		}
 	}

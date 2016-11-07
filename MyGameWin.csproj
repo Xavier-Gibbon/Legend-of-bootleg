@@ -42,6 +42,7 @@
     <Folder Include="src\UnitTests\" />
     <Folder Include="src\Objects\Items\" />
     <Folder Include="src\Objects\Projectiles\" />
+    <Folder Include="src\Objects\Collectables\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Enumerations\Direction.cs" />
@@ -64,6 +65,11 @@
     <Compile Include="src\Objects\Items\Sword.cs" />
     <Compile Include="src\Objects\Projectiles\SwordProjectile.cs" />
     <Compile Include="src\Objects\Projectiles\ArrowProjectile.cs" />
+    <Compile Include="src\Objects\Collectable.cs" />
+    <Compile Include="src\Objects\Collectables\Heart.cs" />
+    <Compile Include="src\Objects\Collectables\Rupee.cs" />
+    <Compile Include="src\UnitTests\TestCollectable.cs" />
+    <Compile Include="src\UnitTests\TestProjectile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">

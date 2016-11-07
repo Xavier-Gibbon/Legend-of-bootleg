@@ -24,6 +24,10 @@ f:17,1,1,
 f:18,0,1,
 f:19,3,1,
 
+//Default Collectable animation
+f:20,0,5,21
+f:21,1,5,20
+
 
 //identifiers
 i:linkDown,0
@@ -45,3 +49,5 @@ i:projectileDown,16
 i:projectileLeft,17
 i:projectileUp,18
 i:projectileRight,19
+
+i:collectable,20

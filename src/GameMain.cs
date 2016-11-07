@@ -19,8 +19,18 @@ namespace MyGame
 			Bow myBow = new Bow ();
 			Potion myPotion = new Potion ("potion");
 
+			Heart myHeart = new Heart (100, 100);
+			Rupee greenRupee = new Rupee (200, 100, 1);
+			Rupee blueRupee = new Rupee (220, 100, 5);
+			Rupee redRupee = new Rupee (240, 100, 20);
+
 			myPlayer.CurrentScreen = myScreen;
 			myScreen.AddObject (myPlayer);
+
+			myScreen.AddObject (myHeart);
+			myScreen.AddObject (greenRupee);
+			myScreen.AddObject (blueRupee);
+			myScreen.AddObject (redRupee);
 
 			myPlayer.Inventory.AddItem (mySword);
 			myPlayer.Inventory.AddItem (myBow);
@@ -102,7 +112,7 @@ namespace MyGame
 		/// <param name="myPlayer">The player.</param>
 		public static void DrawGame (Player myPlayer)
 		{
-			SwinGame.ClearScreen (Color.White);
+			SwinGame.ClearScreen (Color.Cornsilk);
 			SwinGame.DrawFramerate (0, 0);
 
 			myPlayer.CurrentScreen.DrawObjects ();

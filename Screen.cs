@@ -8,6 +8,7 @@ namespace MyGame
 		private Dictionary<Direction, Screen> _directions = new Dictionary<Direction, Screen>();
 		private List<GameObject> _objects = new List<GameObject> ();
 		private List<Projectile> _projectiles = new List<Projectile> ();
+		private List<Collectable> _collectables = new List<Collectable> ();
 		private Player _thePlayer;
 		private List<GameObject> _toDelete = new List<GameObject> ();
 
@@ -36,9 +37,20 @@ namespace MyGame
 				}
 			}
 
+			foreach (Collectable c in _collectables) {
+				if (_thePlayer.CollidedWith (c)) {
+					c.Collect (_thePlayer);
+					RemoveObject (c);
+				}
+			}
+
 			FinishRemoveObjects ();
 		}
 
+		/// <summary>
+		/// Checks the object is on screen and acts depending on the object's type
+		/// </summary>
+		/// <param name="o">O.</param>
 		private void CheckObjectIsOnScreen (GameObject o)
 		{
 			if (o as Projectile != null) {
@@ -68,6 +80,7 @@ namespace MyGame
 			}
 
 			SwinGame.DrawText (_thePlayer.CurrentHealth.ToString(), Color.Red, _cameraPosition.X, _cameraPosition.Y + 20);
+			SwinGame.DrawText (_thePlayer.RupeeCount.ToString (), Color.Blue, _cameraPosition.X, _cameraPosition.Y + 40);
 		}
 
 		/// <summary>
@@ -103,6 +116,8 @@ namespace MyGame
 
 			if (theObject as Projectile != null) {
 				_projectiles.Add (theObject as Projectile);
+			} else if (theObject as Collectable != null) {
+				_collectables.Add (theObject as Collectable);
 			} else if (theObject.GetType () == typeof (Player)) {
 				_thePlayer = theObject as Player;
 			}
@@ -131,6 +146,8 @@ namespace MyGame
 					_thePlayer = null;
 				} else if (o as Projectile != null) {
 					_projectiles.Remove (o as Projectile);
+				} else if (o as Collectable != null) {
+					_collectables.Remove (o as Collectable);
 				}
 			}
 
