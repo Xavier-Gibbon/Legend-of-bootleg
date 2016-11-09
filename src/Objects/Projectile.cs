@@ -33,5 +33,7 @@ namespace MyGame
 				return _speed;
 			}
 		}
+
+		public abstract bool CanBeDeleted ();
 	}
 }

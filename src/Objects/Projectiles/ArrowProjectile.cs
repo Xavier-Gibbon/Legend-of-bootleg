@@ -7,5 +7,10 @@ namespace MyGame
 			: base ("arrowProjectile", "spriteAnimation", direct, x, y, 5, damage)
 		{
 		}
+
+		public override bool CanBeDeleted ()
+		{
+			return true;
+		}
 	}
 }

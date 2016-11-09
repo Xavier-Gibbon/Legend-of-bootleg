@@ -24,6 +24,8 @@ namespace MyGame
 			Rupee blueRupee = new Rupee (220, 100, 5);
 			Rupee redRupee = new Rupee (240, 100, 20);
 
+			Darknut myEnemy = new Darknut (400, 100, Direction.Down);
+
 			myPlayer.CurrentScreen = myScreen;
 			myScreen.AddObject (myPlayer);
 
@@ -31,6 +33,8 @@ namespace MyGame
 			myScreen.AddObject (greenRupee);
 			myScreen.AddObject (blueRupee);
 			myScreen.AddObject (redRupee);
+
+			myScreen.AddObject (myEnemy);
 
 			myPlayer.Inventory.AddItem (mySword);
 			myPlayer.Inventory.AddItem (myBow);
@@ -94,6 +98,9 @@ namespace MyGame
 				myPlayer.UseSecondItem ();
 			}
 
+			if (SwinGame.KeyTyped (KeyCode.SpaceKey)) {
+				myPlayer.CurrentScreen.AddObject (new Darknut (200, 200, Direction.Down));
+			}
 			myPlayer.Move (tempDirect);
 		}
 

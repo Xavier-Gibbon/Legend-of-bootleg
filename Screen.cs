@@ -9,6 +9,7 @@ namespace MyGame
 		private List<GameObject> _objects = new List<GameObject> ();
 		private List<Projectile> _projectiles = new List<Projectile> ();
 		private List<Collectable> _collectables = new List<Collectable> ();
+		private List<Enemy> _enemies = new List<Enemy> ();
 		private Player _thePlayer;
 		private List<GameObject> _toDelete = new List<GameObject> ();
 
@@ -33,7 +34,18 @@ namespace MyGame
 			foreach (Projectile p in _projectiles) {
 				if (_thePlayer.CollidedWith (p)) {
 					_thePlayer.DecreaseHealth (p.Damage);
-					RemoveObject (p);
+					if (p.CanBeDeleted ()) {
+						RemoveObject (p);
+					}
+				} else {
+					foreach (Enemy e in _enemies) {
+						if (e.CollidedWith (p)) {
+							e.DecreaseHealth (p.Damage, p.direct);
+							if (p.CanBeDeleted ()) {
+								RemoveObject (p);
+							}
+						}
+					}
 				}
 			}
 
@@ -41,6 +53,19 @@ namespace MyGame
 				if (_thePlayer.CollidedWith (c)) {
 					c.Collect (_thePlayer);
 					RemoveObject (c);
+				}
+			}
+
+			foreach (Enemy e in _enemies) {
+				if (e.State == SpriteState.Dead) {
+					RemoveObject (e);
+
+					Collectable theDrop = e.Drop ();
+					if (theDrop != null)
+						AddObject(e.Drop ());
+					
+				} else if (_thePlayer.CollidedWith (e) && e.State != SpriteState.Hit) {
+					_thePlayer.DecreaseHealth (e.Damage);
 				}
 			}
 
@@ -57,7 +82,7 @@ namespace MyGame
 				if (o.theSprite.X > _cameraPosition.X + SwinGame.ScreenWidth () || o.theSprite.Y > _cameraPosition.Y + SwinGame.ScreenHeight () || o.theSprite.X + o.theSprite.Width < _cameraPosition.X || o.theSprite.Y + o.theSprite.Height < _cameraPosition.Y) {
 					RemoveObject (o);
 				}
-			} else if(o.GetType() == typeof (Player)) {
+			} else if (o.GetType() == typeof (Player) || o as Enemy != null) {
 				if (o.theSprite.X + o.theSprite.Width > _cameraPosition.X + SwinGame.ScreenWidth ()) {
 					o.theSprite.X = _cameraPosition.X + SwinGame.ScreenWidth () - o.theSprite.Width;
 				} else if (o.theSprite.Y + o.theSprite.Height > _cameraPosition.Y + SwinGame.ScreenHeight ()) {
@@ -81,6 +106,7 @@ namespace MyGame
 
 			SwinGame.DrawText (_thePlayer.CurrentHealth.ToString(), Color.Red, _cameraPosition.X, _cameraPosition.Y + 20);
 			SwinGame.DrawText (_thePlayer.RupeeCount.ToString (), Color.Blue, _cameraPosition.X, _cameraPosition.Y + 40);
+			SwinGame.DrawText (_thePlayer.direct.ToString (), Color.Green, _cameraPosition.X, _cameraPosition.Y + 80);
 		}
 
 		/// <summary>
@@ -118,6 +144,8 @@ namespace MyGame
 				_projectiles.Add (theObject as Projectile);
 			} else if (theObject as Collectable != null) {
 				_collectables.Add (theObject as Collectable);
+			} else if (theObject as Enemy != null) {
+				_enemies.Add (theObject as Enemy);
 			} else if (theObject.GetType () == typeof (Player)) {
 				_thePlayer = theObject as Player;
 			}
@@ -148,6 +176,8 @@ namespace MyGame
 					_projectiles.Remove (o as Projectile);
 				} else if (o as Collectable != null) {
 					_collectables.Remove (o as Collectable);
+				} else if (o as Enemy != null) {
+					_enemies.Remove (o as Enemy);
 				}
 			}
 

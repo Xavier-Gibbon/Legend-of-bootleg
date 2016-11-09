@@ -22,5 +22,11 @@ namespace MyGame
 
 			return newDirection;
 		}
+
+		public static Direction RandomDirection ()
+		{
+			Direction newDirection = (Direction)SwinGame.Rnd (4);
+			return newDirection;
+		}
 	}
 }

@@ -11,7 +11,7 @@ namespace MyGame
 		private ICanBeUsed _equippedItem1;
 		private ICanBeUsed _equippedItem2;
 		private Screen _currentScreen;
-		private Timer _spriteTimer = new Timer ();
+		private Timer _attackTimer = new Timer ();
 
 		public Player (float x, float y, int currentHealth, int maxHealth, SpriteState state, string bitmapName, Screen firstScreen, int rupeeCount) 
 			: base (bitmapName, "spriteAnimation", Direction.Up, x, y, 3)
@@ -63,6 +63,12 @@ namespace MyGame
 			_equippedItem2 = theItem;
 		}
 
+		public void StartAttack ()
+		{
+			_state = SpriteState.Attacking;
+			_attackTimer.Start ();
+		}
+
 		/// <summary>
 		/// Increases the players health.
 		/// </summary>
@@ -99,14 +105,15 @@ namespace MyGame
 		public override void Update ()
 		{
 			base.Update ();
-			if (_sprite.AnimationHasEnded) {
-				if (_state == SpriteState.Attacking) _state = SpriteState.Stationary;
-			}
+			CheckTimers ();
 		}
 
 		private void CheckTimers ()
 		{
-			
+			if (_attackTimer.Ticks > 200) {
+				_attackTimer.Stop ();
+				_state = SpriteState.Stationary;
+			}
 		}
 
 		/// <summary>

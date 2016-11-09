@@ -3,7 +3,7 @@ namespace MyGame
 {
 	public class Heart : Collectable
 	{
-		public Heart (int x, int y) 
+		public Heart (float x, float y) 
 			: base("heart", "spriteAnimation", x, y)
 		{
 		}

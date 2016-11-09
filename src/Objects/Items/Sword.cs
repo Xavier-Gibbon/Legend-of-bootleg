@@ -16,9 +16,11 @@ namespace MyGame
 		public void Use (Player p)
 		{
 			if (p.State != SpriteState.Attacking) {
-				p.State = SpriteState.Attacking;
+				p.StartAttack ();
+
 				float x = p.theSprite.Position.X;
 				float y = p.theSprite.Position.Y;
+
 				switch (p.direct) {
 				case Direction.Up:
 					y -= p.theSprite.Height;
@@ -33,7 +35,7 @@ namespace MyGame
 					x += p.theSprite.Width;
 					break;
 				}
-				p.CurrentScreen.AddObject (new SwordProjectile (SwinGame.BitmapName(ItemGraphic.bmp), p.direct, x, y, 2, p.FullHealth));
+				p.CurrentScreen.AddObject (new SwordProjectile (SwinGame.BitmapName(ItemGraphic.bmp) + "Projectile", p.direct, x, y, 2, p.FullHealth));
 			}
 		}
 	}

@@ -43,6 +43,7 @@
     <Folder Include="src\Objects\Items\" />
     <Folder Include="src\Objects\Projectiles\" />
     <Folder Include="src\Objects\Collectables\" />
+    <Folder Include="src\Objects\Enemies\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Enumerations\Direction.cs" />
@@ -70,6 +71,9 @@
     <Compile Include="src\Objects\Collectables\Rupee.cs" />
     <Compile Include="src\UnitTests\TestCollectable.cs" />
     <Compile Include="src\UnitTests\TestProjectile.cs" />
+    <Compile Include="src\Objects\Enemy.cs" />
+    <Compile Include="src\Objects\Enemies\Darknut.cs" />
+    <Compile Include="src\Objects\Enemies\Octorock.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">

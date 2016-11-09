@@ -16,13 +16,18 @@ namespace MyGame
 
 		public override void Move (Direction direct, int speed)
 		{
-			if (_timeAlive.Ticks < 375) {
+			if (_timeAlive.Ticks < 200) {
 				base.Move (direct, 0);
 			} else if (_canShoot) {
 				base.Move (direct, speed);
 			} else {
 				base.Move (direct, 999999);
 			}
+		}
+
+		public override bool CanBeDeleted ()
+		{
+			return (_timeAlive.Ticks > 200);
 		}
 	}
 }

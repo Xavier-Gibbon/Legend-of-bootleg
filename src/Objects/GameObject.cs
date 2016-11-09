@@ -9,6 +9,15 @@ namespace MyGame
 		protected SpriteState _state;
 		protected int _speed;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="T:MyGame.GameObject"/> class.
+		/// </summary>
+		/// <param name="bmp">The objects Bitmap.</param>
+		/// <param name="anim">The objects Animation script.</param>
+		/// <param name="direct">The objects Direction.</param>
+		/// <param name="x">The x coordinate.</param>
+		/// <param name="y">The y coordinate.</param>
+		/// <param name="speed">The objects Speed.</param>
 		public GameObject (Bitmap bmp, AnimationScript anim, Direction direct, float x, float y, int speed)
 		{
 			_sprite = new Sprite (bmp, anim);
@@ -29,6 +38,11 @@ namespace MyGame
 			Move (direct, _speed);
 		}
 
+		/// <summary>
+		/// Move the object in the specified direction and speed.
+		/// </summary>
+		/// <param name="direct">The direction the object will move in</param>
+		/// <param name="speed">The speed at which the object will move at.</param>
 		public virtual void Move (Direction direct, int speed)
 		{
 			if (_state != SpriteState.Attacking) {
@@ -97,27 +111,46 @@ namespace MyGame
 			}
 		}
 
+		/// <summary>
+		/// Determines the next animation for the object.
+		/// </summary>
+		/// <returns>The next animation.</returns>
 		protected abstract string DetermineNextAnimation (); 
 
-
+		/// <summary>
+		/// Gets the position.
+		/// </summary>
+		/// <value>The position.</value>
 		public Point2D Position {
 			get {
 				return _sprite.Position;
 			}
 		}
 
+		/// <summary>
+		/// Gets the sprite.
+		/// </summary>
+		/// <value>The sprite.</value>
 		public Sprite theSprite {
 			get {
 				return _sprite;
 			}
 		}
 
+		/// <summary>
+		/// Gets the direction.
+		/// </summary>
+		/// <value>The direction.</value>
 		public Direction direct {
 			get {
 				return _direct;
 			}
 		}
 
+		/// <summary>
+		/// Gets or sets the sprite state.
+		/// </summary>
+		/// <value>The state.</value>
 		public SpriteState State {
 			get {
 				return _state;

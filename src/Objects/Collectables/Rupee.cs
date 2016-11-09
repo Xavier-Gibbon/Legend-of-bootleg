@@ -4,7 +4,7 @@ namespace MyGame
 	public class Rupee : Collectable
 	{
 		private int _value;
-		public Rupee (int x, int y, int value)
+		public Rupee (float x, float y, int value)
 			: base("rupee" + value, "spriteAnimation", x, y)
 		{
 			_value = value;
