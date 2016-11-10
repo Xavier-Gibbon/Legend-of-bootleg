@@ -2,6 +2,7 @@ BITMAP,link,link.png, 32, 32, 3, 4, 12
 
 BITMAP,swordProjectile,swordProjectile.png, 32, 32, 2, 2, 4
 BITMAP,arrowProjectile,arrowProjectile.png, 32, 32, 2, 2, 4
+BITMAP,rock,rock.png, 32, 32, 1, 1, 1
 
 BITMAP,heart,heart.png, 14, 16, 2, 1, 2
 BITMAP,rupee1,rupeeGreen.png, 16, 32, 2, 1, 2
@@ -9,5 +10,6 @@ BITMAP,rupee5,rupeeBlue.png, 16, 32, 2, 1, 2
 BITMAP,rupee20,rupeeRed.png, 16, 32, 2, 1, 2
 
 BITMAP,darknut,Darknut.png, 32, 32, 2, 4, 8
+BITMAP,octorock,Octorock.png, 32, 32, 2, 4, 8
 
 ANIM,spriteAnimation,spriteAnimation.txt

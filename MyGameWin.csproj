@@ -44,6 +44,7 @@
     <Folder Include="src\Objects\Projectiles\" />
     <Folder Include="src\Objects\Collectables\" />
     <Folder Include="src\Objects\Enemies\" />
+    <Folder Include="src\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Enumerations\Direction.cs" />
@@ -51,16 +52,12 @@
     <Compile Include="src\Objects\Player.cs" />
     <Compile Include="src\Objects\GameObject.cs" />
     <Compile Include="src\Objects\Item.cs" />
-    <Compile Include="Utilities.cs" />
     <Compile Include="src\UnitTests\TestPlayer.cs" />
     <Compile Include="src\Objects\Inventory.cs" />
     <Compile Include="src\Objects\MenuItem.cs" />
-    <Compile Include="Menu.cs" />
-    <Compile Include="src\Objects\ICanBeUsed.cs" />
     <Compile Include="src\Enumerations\SpriteState.cs" />
     <Compile Include="src\UnitTests\TestItems.cs" />
     <Compile Include="src\Objects\Projectile.cs" />
-    <Compile Include="Screen.cs" />
     <Compile Include="src\Objects\Items\Bow.cs" />
     <Compile Include="src\Objects\Items\Potion.cs" />
     <Compile Include="src\Objects\Items\Sword.cs" />
@@ -74,6 +71,12 @@
     <Compile Include="src\Objects\Enemy.cs" />
     <Compile Include="src\Objects\Enemies\Darknut.cs" />
     <Compile Include="src\Objects\Enemies\Octorock.cs" />
+    <Compile Include="src\Interfaces\ICanBeUsed.cs" />
+    <Compile Include="src\Interfaces\ICanAttack.cs" />
+    <Compile Include="src\Objects\Projectiles\RockProjectile.cs" />
+    <Compile Include="src\Objects\Screen.cs" />
+    <Compile Include="src\Menu.cs" />
+    <Compile Include="src\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">

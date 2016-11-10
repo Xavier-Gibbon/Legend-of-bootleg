@@ -55,6 +55,7 @@ i:projectileDown,16
 i:projectileLeft,17
 i:projectileUp,18
 i:projectileRight,19
+i:rock,18
 
 i:collectable,20
 

@@ -4,11 +4,19 @@ namespace MyGame
 {
 	public class Darknut : Enemy
 	{
-		public Darknut (float x, float y, Direction direct) 
-			: base ("darknut", "spriteAnimation", direct, x, y, 2, 6, 2)
+		public Darknut (float x, float y, Direction direct, int health) 
+			: base ("darknut", "spriteAnimation", direct, x, y, 2, health, 2)
 		{
 		}
 
+		public Darknut (float x, float y) 
+			: this (x, y, Utilities.RandomDirection (), 6) {}
+
+		/// <summary>
+		/// A darknut will not take damage if it hits it from the front
+		/// </summary>
+		/// <param name="damage">The amount of damage taken.</param>
+		/// <param name="direct">The direction that the damage came from.</param>
 		public override void DecreaseHealth (int damage, Direction direct)
 		{
 			if (_direct != Utilities.ReverseDirection (direct)) {

@@ -67,11 +67,13 @@ namespace MyGame
 
 				_sprite.Velocity = tempVector;
 
-				if (direct != Direction.None) {
-					_direct = direct;
-					_state = SpriteState.Moving;
-				} else {
-					_state = SpriteState.Stationary;
+				if (_state != SpriteState.Hit) {
+					if (direct != Direction.None) {
+						_direct = direct;
+						_state = SpriteState.Moving;
+					} else {
+						_state = SpriteState.Stationary;
+					}
 				}
 
 				_sprite.Move ();

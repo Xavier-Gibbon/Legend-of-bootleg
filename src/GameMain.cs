@@ -24,7 +24,7 @@ namespace MyGame
 			Rupee blueRupee = new Rupee (220, 100, 5);
 			Rupee redRupee = new Rupee (240, 100, 20);
 
-			Darknut myEnemy = new Darknut (400, 100, Direction.Down);
+			Darknut myEnemy = new Darknut (400, 100);
 
 			myPlayer.CurrentScreen = myScreen;
 			myScreen.AddObject (myPlayer);
@@ -99,7 +99,7 @@ namespace MyGame
 			}
 
 			if (SwinGame.KeyTyped (KeyCode.SpaceKey)) {
-				myPlayer.CurrentScreen.AddObject (new Darknut (200, 200, Direction.Down));
+				myPlayer.CurrentScreen.AddObject (new Octorock (200, 200));
 			}
 			myPlayer.Move (tempDirect);
 		}

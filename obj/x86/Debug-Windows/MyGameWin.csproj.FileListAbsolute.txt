@@ -49,3 +49,4 @@ C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\rupeeGreen.png
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\rupeeRed.png
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\Darknut.png
 C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\Octorock.png
+C:\COS20007\Game\The Legend of Bootleg\bin\Debug\Resources\images\rock.png
