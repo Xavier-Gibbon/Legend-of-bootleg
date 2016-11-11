@@ -7,7 +7,7 @@ namespace MyGame
 		private Timer _timeAlive = new Timer ();
 		private bool _canShoot;
 
-		public SwordProjectile (string BitmapName, Direction direct, float x, float y, int damage, bool canShoot) 
+		public SwordProjectile (string BitmapName, Direction direct, int x, int y, int damage, bool canShoot) 
 			: base (BitmapName, "spriteAnimation", direct, x, y, 5, damage)
 		{
 			_timeAlive.Start ();

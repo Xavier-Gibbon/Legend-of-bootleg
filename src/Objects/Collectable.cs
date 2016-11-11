@@ -3,8 +3,8 @@ namespace MyGame
 {
 	public abstract class Collectable : GameObject
 	{
-		public Collectable (string bmp, string anim, float x, float y)
-			: base (bmp, anim, Direction.None, x, y, 0) 
+		public Collectable (string bmp, string anim, int x, int y)
+			: base (bmp, anim, Direction.None, x, y, 0, SpriteState.Stationary) 
 		{
 		}
 

@@ -3,7 +3,7 @@ namespace MyGame
 {
 	public class RockProjectile : Projectile
 	{
-		public RockProjectile (Direction direct, float x, float y, int damage)
+		public RockProjectile (Direction direct, int x, int y, int damage)
 			: base ("rock", "spriteAnimation", direct, x, y, 5, damage)
 		{
 		}

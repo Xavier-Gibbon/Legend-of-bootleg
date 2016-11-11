@@ -14,8 +14,8 @@ namespace MyGame
 		{
 			if (_arrowCount != 0) {
 				_arrowCount--;
-				float x = p.theSprite.Position.X;
-				float y = p.theSprite.Position.Y;
+				int x = (int) p.theSprite.Position.X;
+				int y = (int) p.theSprite.Position.Y;
 				switch (p.direct) {
 				case Direction.Up:
 					y -= p.theSprite.Height;

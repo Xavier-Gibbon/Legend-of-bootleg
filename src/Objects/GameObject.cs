@@ -18,16 +18,17 @@ namespace MyGame
 		/// <param name="x">The x coordinate.</param>
 		/// <param name="y">The y coordinate.</param>
 		/// <param name="speed">The objects Speed.</param>
-		public GameObject (Bitmap bmp, AnimationScript anim, Direction direct, float x, float y, int speed)
+		public GameObject (Bitmap bmp, AnimationScript anim, Direction direct, int x, int y, int speed, SpriteState state)
 		{
 			_sprite = new Sprite (bmp, anim);
 			_speed = speed;
+			_state = state;
 			_direct = direct;
 			_sprite.Position.X = x;
 			_sprite.Position.Y = y;
 		}
-		public GameObject (string bmp, string anim, Direction direct, float x, float y, int speed)
-			: this (SwinGame.BitmapNamed (bmp), SwinGame.AnimationScriptNamed (anim), direct, x, y, speed) { }
+		public GameObject (string bmp, string anim, Direction direct, int x, int y, int speed, SpriteState state)
+			: this (SwinGame.BitmapNamed (bmp), SwinGame.AnimationScriptNamed (anim), direct, x, y, speed, state) { }
 
 		/// <summary>
 		/// Moves the object in the specified direction

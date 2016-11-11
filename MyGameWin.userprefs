@@ -4,23 +4,24 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\Objects\Screen.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\Objects\Projectiles\RockProjectile.cs">
     <Files>
-      <File FileName="src\GameMain.cs" Line="105" Column="68" />
-      <File FileName="src\Objects\GameObject.cs" Line="88" Column="18" />
-      <File FileName="src\Objects\Collectable.cs" Line="15" Column="24" />
-      <File FileName="src\Objects\Collectables\Heart.cs" Line="4" Column="31" />
-      <File FileName="src\Objects\Projectiles\SwordProjectile.cs" Line="19" Column="30" />
-      <File FileName="src\Objects\Items\Sword.cs" Line="38" Column="145" />
-      <File FileName="src\Objects\Player.cs" Line="1" Column="1" />
-      <File FileName="src\Objects\Projectile.cs" Line="22" Column="1" />
-      <File FileName="src\Objects\Projectiles\ArrowProjectile.cs" Line="7" Column="28" />
-      <File FileName="src\Interfaces\ICanAttack.cs" Line="11" Column="3" />
-      <File FileName="src\Interfaces\ICanBeUsed.cs" Line="1" Column="1" />
-      <File FileName="src\Objects\Projectiles\RockProjectile.cs" Line="4" Column="42" />
-      <File FileName="src\Objects\Screen.cs" Line="66" Column="8" />
-      <File FileName="src\UnitTests\TestScreen.cs" Line="26" Column="29" />
-      <File FileName="src\Objects\Items\Bow.cs" Line="33" Column="78" />
+      <File FileName="src\GameMain.cs" Line="122" Column="17" />
+      <File FileName="src\Objects\Player.cs" Line="24" Column="28" />
+      <File FileName="src\Objects\Projectile.cs" Line="8" Column="75" />
+      <File FileName="src\Objects\Item.cs" Line="1" Column="1" />
+      <File FileName="src\Objects\Enemy.cs" Line="24" Column="70" />
+      <File FileName="src\Objects\Collectable.cs" Line="10" Column="3" />
+      <File FileName="src\Objects\GameObject.cs" Line="27" Column="27" />
+      <File FileName="src\Objects\Projectiles\SwordProjectile.cs" Line="10" Column="74" />
+      <File FileName="src\Objects\Projectiles\ArrowProjectile.cs" Line="6" Column="13" />
+      <File FileName="src\Objects\Collectables\Heart.cs" Line="11" Column="76" />
+      <File FileName="src\Objects\Items\Bow.cs" Line="18" Column="19" />
+      <File FileName="src\Objects\Items\Sword.cs" Line="22" Column="19" />
+      <File FileName="src\Objects\Collectables\Rupee.cs" Line="13" Column="102" />
+      <File FileName="src\Objects\Enemies\Darknut.cs" Line="13" Column="100" />
+      <File FileName="src\Objects\Enemies\Octorock.cs" Line="15" Column="30" />
+      <File FileName="src\Objects\Projectiles\RockProjectile.cs" Line="6" Column="54" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.MyGameWin PreferredExecutionTarget="MonoDevelop.Default" />

@@ -18,8 +18,8 @@ namespace MyGame
 			if (p.State != SpriteState.Attacking) {
 				p.StartAttack ();
 
-				float x = p.theSprite.Position.X;
-				float y = p.theSprite.Position.Y;
+				int x = (int) p.theSprite.Position.X;
+				int y = (int) p.theSprite.Position.Y;
 
 				switch (p.direct) {
 				case Direction.Up:

@@ -14,8 +14,8 @@ namespace MyGame
 		private Timer _attackTimer = new Timer ();
 		private Timer _hitTimer = new Timer ();
 
-		public Player (float x, float y, int currentHealth, int maxHealth, SpriteState state, string bitmapName, Screen firstScreen, int rupeeCount) 
-			: base (bitmapName, "spriteAnimation", Direction.Up, x, y, 3)
+		public Player (int x, int y, int currentHealth, int maxHealth, SpriteState state, string bitmapName, Screen firstScreen, int rupeeCount) 
+			: base (bitmapName, "spriteAnimation", Direction.Up, x, y, 3, state)
 		{
 			_maxHealth = maxHealth;
 			_currentHealth = currentHealth;
@@ -24,7 +24,7 @@ namespace MyGame
 			_rupeeCount = rupeeCount;
 		}
 
-		public Player (float x, float y, Screen firstScreen) : this (x, y, 6, 6, SpriteState.Stationary, "link", firstScreen, 0) { }
+		public Player (int x, int y, Screen firstScreen) : this (x, y, 6, 6, SpriteState.Stationary, "link", firstScreen, 0) { }
 
 		/// <summary>
 		/// Uses the first equipped item

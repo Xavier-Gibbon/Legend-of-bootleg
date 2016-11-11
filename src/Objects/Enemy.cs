@@ -21,8 +21,8 @@ namespace MyGame
 		/// <param name="y">The y coordinate.</param>
 		/// <param name="speed">The Enemy's Speed.</param>
 		/// <param name="health">The Enemy's Health.</param>
-		public Enemy (string bmp, string anim, Direction direct, float x, float y, int speed, int health, int damage) 
-			: base(bmp, anim, direct, x, y, speed)
+		public Enemy (string bmp, string anim, Direction direct, int x, int y, int speed, SpriteState state, int health, int damage) 
+			: base(bmp, anim, direct, x, y, speed, state)
 		{
 			_health = health;
 			_damage = damage;

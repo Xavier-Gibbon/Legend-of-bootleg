@@ -4,13 +4,18 @@ namespace MyGame
 {
 	public class Darknut : Enemy
 	{
-		public Darknut (float x, float y, Direction direct, int health) 
-			: base ("darknut", "spriteAnimation", direct, x, y, 2, health, 2)
+		public Darknut (string bmp, string anim, Direction direct, int x, int y, SpriteState state, int health) 
+			: base (bmp, anim, direct, x, y, 2, state, health, 2)
 		{
 		}
 
-		public Darknut (float x, float y) 
-			: this (x, y, Utilities.RandomDirection (), 6) {}
+		public Darknut (int x, int y) 
+			: this ("darknut", "spriteAnimation", Utilities.RandomDirection (), x, y, SpriteState.Stationary, 6) 
+		{
+			while (_direct == Direction.None) {
+				_direct = Utilities.RandomDirection ();
+			}
+		}
 
 		/// <summary>
 		/// A darknut will not take damage if it hits it from the front
@@ -33,7 +38,7 @@ namespace MyGame
 			Random dropChance = new Random();
 
 			if (dropChance.NextDouble () > 0.7) {
-				theDrop = new Heart (_sprite.X, _sprite.Y);
+				theDrop = new Heart ((int)_sprite.X, (int)_sprite.Y);
 			} else if (dropChance.NextDouble () > 0.75) {
 				int value;
 				double valueChance = dropChance.NextDouble ();
@@ -46,7 +51,7 @@ namespace MyGame
 					value = 1;
 				}
 
-				theDrop = new Rupee (_sprite.X, _sprite.Y, value);
+				theDrop = new Rupee ((int)_sprite.X, (int)_sprite.Y, value);
 			}
 
 			return theDrop;

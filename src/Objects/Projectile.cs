@@ -5,8 +5,8 @@ namespace MyGame
 	{
 		private int _damage;
 
-		public Projectile (string bmp, string anim, Direction direct, float x, float y, int speed, int damage) 
-			: base (bmp, anim, direct, x, y, speed)
+		public Projectile (string bmp, string anim, Direction direct, int x, int y, int speed, int damage) 
+			: base (bmp, anim, direct, x, y, speed, SpriteState.Moving)
 		{
 			_damage = damage;
 		}

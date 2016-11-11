@@ -52,7 +52,7 @@ namespace MyGame
 			
 				ProcessEvents (myPlayer, myMenu);
 				UpdateGame (myPlayer);
-				DrawGame (myPlayer, myScreen);
+				DrawGame (myPlayer);
             }
         }
 
@@ -120,7 +120,7 @@ namespace MyGame
 		/// Draws the game.
 		/// </summary>
 		/// <param name="myPlayer">The player.</param>
-		public static void DrawGame (Player myPlayer, Screen myScreen)
+		public static void DrawGame (Player myPlayer)
 		{
 			SwinGame.ClearScreen (Color.Cornsilk);
 			SwinGame.DrawFramerate (SwinGame.CameraX(), SwinGame.CameraY());

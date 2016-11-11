@@ -7,13 +7,18 @@ namespace MyGame
 		private bool _stop = false;
 		private bool _hasAttacked = false;
 
-		public Octorock (float x, float y, Direction direct, int health) 
-			: base ("octorock", "spriteAnimation", direct, x, y, 2, health, 1)
+		public Octorock (string bmp, string anim, Direction direct, int x, int y, SpriteState state, int health) 
+			: base ("octorock", "spriteAnimation", direct, x, y, 2, state, health, 1)
 		{
 		}
 
-		public Octorock (float x, float y) 
-			: this (x, y, Utilities.RandomDirection (), 3) { }
+		public Octorock (int x, int y) 
+			: this ("octorock", "spriteAnimation", Utilities.RandomDirection (), x, y, SpriteState.Stationary, 3) 
+		{
+			while (_direct == Direction.None) {
+				_direct = Utilities.RandomDirection ();
+			}
+		}
 
 		/// <summary>
 		/// Octorocks will only drop rupees of values 1 and 5
@@ -33,7 +38,7 @@ namespace MyGame
 					value = 1;
 				}
 
-				theDrop = new Rupee (_sprite.X, _sprite.Y, value);
+				theDrop = new Rupee ((int)_sprite.X, (int)_sprite.Y, value);
 			}
 
 			return theDrop;
@@ -82,8 +87,8 @@ namespace MyGame
 
 		public Projectile Attack ()
 		{
-			float x = _sprite.Position.X;
-			float y = _sprite.Position.Y;
+			int x = (int)_sprite.Position.X;
+			int y = (int)_sprite.Position.Y;
 
 			switch (_direct) {
 			case Direction.Up:
