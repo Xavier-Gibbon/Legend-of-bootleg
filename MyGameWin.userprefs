@@ -7,10 +7,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="src\Objects\GameObject.cs">
     <Files>
       <File FileName="src\GameMain.cs" Line="37" Column="4" />
-      <File FileName="src\Objects\GameObject.cs" Line="77" Column="6" />
-      <File FileName="src\Objects\Enemy.cs" Line="55" Column="5" />
-      <File FileName="src\Objects\Enemies\Darknut.cs" Line="80" Column="4" />
-      <File FileName="src\Objects\Enemies\Octorock.cs" Line="92" Column="24" />
+      <File FileName="src\Objects\GameObject.cs" Line="8" Column="31" />
       <File FileName="src\Objects\Collectable.cs" Line="15" Column="24" />
       <File FileName="src\Objects\Collectables\Heart.cs" Line="4" Column="31" />
       <File FileName="src\Objects\Projectiles\SwordProjectile.cs" Line="19" Column="30" />

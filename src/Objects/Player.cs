@@ -12,6 +12,7 @@ namespace MyGame
 		private ICanBeUsed _equippedItem2;
 		private Screen _currentScreen;
 		private Timer _attackTimer = new Timer ();
+		private Timer _hitTimer = new Timer ();
 
 		public Player (float x, float y, int currentHealth, int maxHealth, SpriteState state, string bitmapName, Screen firstScreen, int rupeeCount) 
 			: base (bitmapName, "spriteAnimation", Direction.Up, x, y, 3)
@@ -42,6 +43,16 @@ namespace MyGame
 		{
 			if (_equippedItem2 != null) {
 				_equippedItem2.Use (this);
+			}
+		}
+
+		public override void Move (Direction direct, int speed)
+		{
+			base.Move (direct, speed);
+			if (_state == SpriteState.Hit) {
+				if (direct != Direction.None) 
+					_direct = direct;
+				
 			}
 		}
 
@@ -87,9 +98,13 @@ namespace MyGame
 		/// <param name="damage">Amount of damage.</param>
 		public void DecreaseHealth (int damage)
 		{
-			_currentHealth -= damage;
-			if (_currentHealth < 0) {
-				_currentHealth = 0;
+			if (_state != SpriteState.Hit) {
+				_currentHealth -= damage;
+				if (_currentHealth < 0) {
+					_currentHealth = 0;
+				}
+				_hitTimer.Start ();
+				_state = SpriteState.Hit;
 			}
 		}
 
@@ -112,7 +127,15 @@ namespace MyGame
 		{
 			if (_attackTimer.Ticks > 200) {
 				_attackTimer.Stop ();
-				_state = SpriteState.Stationary;
+				if (_state == SpriteState.Attacking)
+					_state = SpriteState.Stationary;
+			}
+
+			if (_hitTimer.Ticks > 1000) {
+				_hitTimer.Stop ();
+
+				if (_state == SpriteState.Hit)
+					_state = SpriteState.Stationary;
 			}
 		}
 
