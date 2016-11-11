@@ -35,7 +35,7 @@ namespace MyGame
 					x += p.theSprite.Width;
 					break;
 				}
-				p.CurrentScreen.AddObject (new SwordProjectile (SwinGame.BitmapName(ItemGraphic.bmp) + "Projectile", p.direct, x, y, 2, p.FullHealth));
+				p.CurrentScreen.AddObject (new SwordProjectile (SwinGame.BitmapName(ItemGraphic.bmp) + "Projectile", p.direct, x, y, 2, p.FullHealth), false);
 			}
 		}
 	}

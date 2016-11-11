@@ -11,30 +11,33 @@ namespace MyGame
 			LoadResources ();
 			//Initialize objects
 			Screen myScreen = new Screen (0, 0);
+			Screen myScreen2 = new Screen (1, 0);
+			Screen myScreen3 = new Screen (0, 1);
+			Screen myScreen4 = new Screen (1, 1);
 
 			Player myPlayer = new Player (400, 400, myScreen);
+
+			myPlayer.CurrentScreen = myScreen;
+			myScreen.AddObject (myPlayer, false);
+
+			myScreen.AddNewPath (myScreen2, Direction.Right);
+			myScreen.AddNewPath (myScreen3, Direction.Down);
+
+			myScreen4.AddNewPath (myScreen2, Direction.Up);
+			myScreen4.AddNewPath (myScreen3, Direction.Left);
+
 			Menu myMenu = new Menu ();
 
 			Sword mySword = new Sword ("sword");
 			Bow myBow = new Bow ();
 			Potion myPotion = new Potion ("potion");
 
-			Heart myHeart = new Heart (100, 100);
-			Rupee greenRupee = new Rupee (200, 100, 1);
-			Rupee blueRupee = new Rupee (220, 100, 5);
-			Rupee redRupee = new Rupee (240, 100, 20);
+			myScreen.AddObject(new Heart (100, 100), true);
+			myScreen.AddObject(new Rupee (200, 100, 1), true);
+			myScreen.AddObject(new Rupee (220, 100, 5), true);
+			myScreen.AddObject(new Rupee (240, 100, 20), true);
 
-			Darknut myEnemy = new Darknut (400, 100);
-
-			myPlayer.CurrentScreen = myScreen;
-			myScreen.AddObject (myPlayer);
-
-			myScreen.AddObject (myHeart);
-			myScreen.AddObject (greenRupee);
-			myScreen.AddObject (blueRupee);
-			myScreen.AddObject (redRupee);
-
-			myScreen.AddObject (myEnemy);
+			myScreen2.AddObject(new Darknut (400, 100), true);
 
 			myPlayer.Inventory.AddItem (mySword);
 			myPlayer.Inventory.AddItem (myBow);
@@ -49,7 +52,7 @@ namespace MyGame
 			
 				ProcessEvents (myPlayer, myMenu);
 				UpdateGame (myPlayer);
-				DrawGame (myPlayer);
+				DrawGame (myPlayer, myScreen);
             }
         }
 
@@ -99,7 +102,7 @@ namespace MyGame
 			}
 
 			if (SwinGame.KeyTyped (KeyCode.SpaceKey)) {
-				myPlayer.CurrentScreen.AddObject (new Octorock (200, 200));
+				myPlayer.CurrentScreen.AddObject (new Octorock (200, 200), true);
 			}
 			myPlayer.Move (tempDirect);
 		}
@@ -117,10 +120,10 @@ namespace MyGame
 		/// Draws the game.
 		/// </summary>
 		/// <param name="myPlayer">The player.</param>
-		public static void DrawGame (Player myPlayer)
+		public static void DrawGame (Player myPlayer, Screen myScreen)
 		{
 			SwinGame.ClearScreen (Color.Cornsilk);
-			SwinGame.DrawFramerate (0, 0);
+			SwinGame.DrawFramerate (SwinGame.CameraX(), SwinGame.CameraY());
 
 			myPlayer.CurrentScreen.DrawObjects ();
 

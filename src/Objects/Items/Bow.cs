@@ -30,7 +30,7 @@ namespace MyGame
 					x += p.theSprite.Width;
 					break;
 				}
-				p.CurrentScreen.AddObject (new ArrowProjectile (p.direct, x, y, 3));
+				p.CurrentScreen.AddObject (new ArrowProjectile (p.direct, x, y, 3), false);
 			}
 		}
 	}
