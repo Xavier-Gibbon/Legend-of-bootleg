@@ -4,11 +4,12 @@ namespace MyGame
 	public class Bow : Item, ICanBeUsed
 	{
 		private int _arrowCount;
-		public Bow () 
-			: base ("bow")
+		public Bow (string bmp) 
+			: base (bmp)
 		{
 			_arrowCount = 30;
 		}
+		public Bow () : this ("bow") {}
 
 		public void Use (Player p)
 		{

@@ -14,7 +14,7 @@ namespace MyGame
 		public void SetUp ()
 		{
 			dumby = new Screen (0, 0);
-			myPlayer = new Player (0, 0, 6, 10, SpriteState.Stationary, "link", dumby, 0);
+			myPlayer = new Player (0, 0, 6, 10, SpriteState.Stationary, "link", "blah", dumby, 0);
 			mySword = new Sword("sword");
 			myPotion = new Potion ("potion");
 		}
