@@ -5,7 +5,7 @@ namespace MyGame
 	public abstract class Enemy : GameObject
 	{
 		protected int _health;
-		private int _damage;
+		protected int _damage;
 		protected Direction _forcedDirect;
 		protected Timer _hitTimer = new Timer ();
 		protected Timer _moveTimer = new Timer ();
@@ -64,6 +64,10 @@ namespace MyGame
 			base.Update ();
 		}
 
+		/// <summary>
+		/// Most enemies will have the same animation.
+		/// </summary>
+		/// <returns>The next animation.</returns>
 		protected override string DetermineNextAnimation ()
 		{
 			return "enemy" + _direct;
@@ -77,10 +81,6 @@ namespace MyGame
 		public int Damage {
 			get {
 				return _damage;
-			}
-
-			set {
-				_damage = value;
 			}
 		}
 	}

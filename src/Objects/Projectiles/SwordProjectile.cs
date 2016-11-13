@@ -14,6 +14,11 @@ namespace MyGame
 			_canShoot = canShoot;
 		}
 
+		/// <summary>
+		/// The sword projectile will move only if it can shoot and its been alive for more than 200 milliseconds
+		/// </summary>
+		/// <param name="direct">The direction.</param>
+		/// <param name="speed">The speed.</param>
 		public override void Move (Direction direct, int speed)
 		{
 			if (_timeAlive.Ticks < 200) {
@@ -25,6 +30,10 @@ namespace MyGame
 			}
 		}
 
+		/// <summary>
+		/// The sword projectile can only be deleted after it has been alive for more than 200 milliseconds
+		/// </summary>
+		/// <returns><c>true</c>, if the sword projectile has been alive after 200 milliseconds, <c>false</c> otherwise.</returns>
 		public override bool CanBeDeleted ()
 		{
 			return (_timeAlive.Ticks > 200);

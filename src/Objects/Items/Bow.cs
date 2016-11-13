@@ -11,6 +11,10 @@ namespace MyGame
 		}
 		public Bow () : this ("bow") {}
 
+		/// <summary>
+		/// The bow will create an arrow projectile depending on the players position and direction
+		/// </summary>
+		/// <param name="p">The player.</param>
 		public void Use (Player p)
 		{
 			if (_arrowCount != 0) {

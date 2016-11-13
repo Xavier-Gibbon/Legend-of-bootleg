@@ -23,6 +23,7 @@ namespace MyGame
 
 		/// <summary>
 		/// Updates the screens objects.
+		/// Some objects will have different checks based on its type
 		/// </summary>
 		public void UpdateObjects ()
 		{
@@ -95,7 +96,7 @@ namespace MyGame
 		/// <summary>
 		/// Checks the object is on screen and acts depending on the object's type
 		/// </summary>
-		/// <param name="o">O.</param>
+		/// <param name="o">The object.</param>
 		private void CheckObjectIsOnScreen (GameObject o)
 		{
 			if (o as Projectile != null) {
@@ -111,6 +112,11 @@ namespace MyGame
 			}
 		}
 
+		/// <summary>
+		/// Keeps the object on screen.
+		/// </summary>
+		/// <returns><c>true</c>, if the object was made to stay on screen, <c>false</c> if the object was already on screen.</returns>
+		/// <param name="o">The object.</param>
 		private bool KeepObjectOnScreen (GameObject o)
 		{
 			bool result = false;
@@ -132,6 +138,11 @@ namespace MyGame
 			return result;
 		}
 
+		/// <summary>
+		/// Moves the camera from one screen to the next. 
+		/// This happens when the player moves off screen and there is a screen that the player can move to.
+		/// </summary>
+		/// <param name="theDirection">The direction that the player is moving in.</param>
 		private void MoveScreen (Direction theDirection)
 		{
 			Screen theScreen = _directions [theDirection];
@@ -258,6 +269,10 @@ namespace MyGame
 			_toDelete = new List<GameObject> ();
 		}
 
+		/// <summary>
+		/// Gets or sets the player.
+		/// </summary>
+		/// <value>The player.</value>
 		public Player ThePlayer {
 			get {
 				return _thePlayer;
@@ -268,19 +283,23 @@ namespace MyGame
 			}
 		}
 
+		/// <summary>
+		/// Gets the camera position.
+		/// </summary>
+		/// <value>The camera position.</value>
 		public Point2D CameraPosition {
 			get {
 				return _cameraPosition;
 			}
 		}
 
+		/// <summary>
+		/// Gets the directions of the next screens.
+		/// </summary>
+		/// <value>The directions.</value>
 		public Dictionary<Direction, Screen> Directions {
 			get {
 				return _directions;
-			}
-
-			set {
-				_directions = value;
 			}
 		}
 	}

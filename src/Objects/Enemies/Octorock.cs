@@ -80,11 +80,19 @@ namespace MyGame
 			}
 		}
 
+		/// <summary>
+		/// Checks if the octorock can attack
+		/// </summary>
+		/// <returns><c>true</c>, if the octorock can attack, <c>false</c> otherwise.</returns>
 		public bool CheckAttack ()
 		{
 			return (_moveTimer.Ticks > (_moveTimerLimit - 100) && _stop && !_hasAttacked);
 		}
 
+		/// <summary>
+		/// The octorock will fire a rock projectile
+		/// </summary>
+		/// <returns>The rock projecile</returns>
 		public Projectile Attack ()
 		{
 			int x = (int)_sprite.Position.X;

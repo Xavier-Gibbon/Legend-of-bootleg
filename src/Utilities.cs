@@ -4,6 +4,11 @@ namespace MyGame
 {
 	public static class Utilities
 	{
+		/// <summary>
+		/// Reverses the given direction.
+		/// </summary>
+		/// <returns>The reversed direction.</returns>
+		/// <param name="theDirection">The direction to be reversed.</param>
 		public static Direction ReverseDirection (Direction theDirection)
 		{
 			Direction newDirection;
@@ -23,6 +28,10 @@ namespace MyGame
 			return newDirection;
 		}
 
+		/// <summary>
+		/// Gives a random direction
+		/// </summary>
+		/// <returns>The random direction.</returns>
 		public static Direction RandomDirection ()
 		{
 			Direction newDirection = (Direction)SwinGame.Rnd (5);

@@ -13,11 +13,20 @@ namespace MyGame
 			_bmp = bmp;
 		}
 
+		/// <summary>
+		/// Draw the bitmap.
+		/// </summary>
+		/// <param name="x">The x coordinate.</param>
+		/// <param name="y">The y coordinate.</param>
 		public void Draw (int x, int y)
 		{
 			SwinGame.DrawBitmap (_bmp, x, y);
 		}
 
+		/// <summary>
+		/// Gets or sets the bmp.
+		/// </summary>
+		/// <value>The bmp.</value>
 		public Bitmap bmp {
 			get 
 			{

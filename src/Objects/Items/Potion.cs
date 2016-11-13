@@ -11,6 +11,10 @@ namespace MyGame
 			_used = false;
 		}
 
+		/// <summary>
+		/// The potion will increase the players health, but only if it hasn't been used up yet
+		/// </summary>
+		/// <param name="p">P.</param>
 		public void Use (Player p)
 		{
 			if (!_used) {
@@ -20,6 +24,9 @@ namespace MyGame
 			}
 		}
 
+		/// <summary>
+		/// Fill the potion up.
+		/// </summary>
 		public void Fill ()
 		{
 			_used = true;

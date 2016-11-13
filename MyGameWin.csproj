@@ -78,6 +78,7 @@
     <Compile Include="src\Menu.cs" />
     <Compile Include="src\Utilities.cs" />
     <Compile Include="src\UnitTests\TestScreen.cs" />
+    <Compile Include="src\MySqlConnector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SwinGame">
@@ -87,6 +88,7 @@
     <Reference Include="nunit.framework">
       <HintPath>packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\**\*.*">

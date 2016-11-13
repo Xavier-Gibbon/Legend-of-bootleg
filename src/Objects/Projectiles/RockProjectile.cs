@@ -8,6 +8,10 @@ namespace MyGame
 		{
 		}
 
+		/// <summary>
+		/// The rock projectile will always be deleted
+		/// </summary>
+		/// <returns>true</returns>
 		public override bool CanBeDeleted ()
 		{
 			return true;

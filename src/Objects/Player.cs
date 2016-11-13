@@ -46,16 +46,6 @@ namespace MyGame
 			}
 		}
 
-		public override void Move (Direction direct, int speed)
-		{
-			base.Move (direct, speed);
-			if (_state == SpriteState.Hit) {
-				if (direct != Direction.None) 
-					_direct = direct;
-				
-			}
-		}
-
 		/// <summary>
 		/// Equips the item.
 		/// </summary>
@@ -74,6 +64,24 @@ namespace MyGame
 			_equippedItem2 = theItem;
 		}
 
+		/// <summary>
+		/// The player will still be able to move even when hit.
+		/// </summary>
+		/// <param name="direct">Direct.</param>
+		/// <param name="speed">Speed.</param>
+		public override void Move (Direction direct, int speed)
+		{
+			base.Move (direct, speed);
+			if (_state == SpriteState.Hit) {
+				if (direct != Direction.None)
+					_direct = direct;
+
+			}
+		}
+
+		/// <summary>
+		/// Makes the player attack. Mostly changes the state of the player.
+		/// </summary>
 		public void StartAttack ()
 		{
 			_state = SpriteState.Attacking;
@@ -115,14 +123,21 @@ namespace MyGame
 		public void IncreaseMaxHealth (int healthIncrement)
 		{
 			_maxHealth += healthIncrement;
+			IncreaseHealth (healthIncrement);
 		}
 
+		/// <summary>
+		/// Update the player.
+		/// </summary>
 		public override void Update ()
 		{
 			base.Update ();
 			CheckTimers ();
 		}
 
+		/// <summary>
+		/// Checks the players 2 timers.
+		/// </summary>
 		private void CheckTimers ()
 		{
 			if (_attackTimer.Ticks > 200) {
@@ -205,6 +220,10 @@ namespace MyGame
 			}
 		}
 
+		/// <summary>
+		/// Gets or sets the rupee count.
+		/// </summary>
+		/// <value>The players rupee count.</value>
 		public int RupeeCount {
 			get {
 				return _rupeeCount;

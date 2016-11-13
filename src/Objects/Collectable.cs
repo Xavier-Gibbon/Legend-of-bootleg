@@ -8,8 +8,16 @@ namespace MyGame
 		{
 		}
 
+		/// <summary>
+		/// Has the player collect the object
+		/// </summary>
+		/// <param name="p">The player.</param>
 		public abstract void Collect (Player p);
 
+		/// <summary>
+		/// Most collectables will have the same animation
+		/// </summary>
+		/// <returns>The next animation.</returns>
 		protected override string DetermineNextAnimation ()
 		{
 			return "collectable";

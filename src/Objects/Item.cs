@@ -13,6 +13,10 @@ namespace MyGame
 		public Item (string bmpName) 
 			: this (SwinGame.BitmapNamed (bmpName)) { }
 
+		/// <summary>
+		/// Gets the graphic of the item
+		/// </summary>
+		/// <value>The item graphic.</value>
 		public MenuItem ItemGraphic {
 			get {
 				return _itemGraphic;

@@ -8,6 +8,10 @@ namespace MyGame
 		{
 		}
 
+		/// <summary>
+		/// Arrows will always be able to be deleted
+		/// </summary>
+		/// <returns>true</returns>
 		public override bool CanBeDeleted ()
 		{
 			return true;

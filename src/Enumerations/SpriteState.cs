@@ -2,7 +2,7 @@
 namespace MyGame
 {
 	/// <summary>
-	/// Defines the state of the sprite for both players and enemies
+	/// Defines the state of the sprite for game objects.
 	/// </summary>
 	public enum SpriteState
 	{
