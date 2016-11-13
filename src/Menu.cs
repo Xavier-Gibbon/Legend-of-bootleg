@@ -62,8 +62,10 @@ namespace MyGame
 				InventoryMenu (p);
 				break;
 			case 2:
+				GameMain.LoadGame ();
+				break;
 			case 3:
-			default:
+				GameMain.SaveGame ();
 				break;
 			}
 		}

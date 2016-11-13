@@ -17,6 +17,8 @@ namespace MyGame
 			}
 		}
 
+		public Darknut () { }
+
 		/// <summary>
 		/// A darknut will not take damage if it hits it from the front
 		/// </summary>

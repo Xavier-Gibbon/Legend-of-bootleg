@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace MyGame
 {
 	public abstract class Projectile : GameObject
 	{
+		public static int ProjectID;
 		protected int _damage;
 
 		public Projectile (string bmp, string anim, Direction direct, int x, int y, int speed, int damage) 
@@ -11,6 +13,30 @@ namespace MyGame
 			_damage = damage;
 		}
 
+		public Projectile () { }
+
+		public override void Save (MySqlConnector theConnector)
+		{
+			base.Save (theConnector);
+
+			string command = "insert into Projectile (ProjectileID, ObjectID, Damage) values (" + ProjectID + ", " + ObjectID + ", " + _damage + ");";
+
+			theConnector.NonQuery (command);
+			ProjectID++;
+		}
+
+		public override void Load (MySqlConnector theConnector, int ObjectID)
+		{
+			base.Load (theConnector, ObjectID);
+
+			string command = "select * from Projectile where ObjectID = " + ObjectID + ";";
+			List<List<string>> data = theConnector.Select (command);
+
+			int i;
+
+			int.TryParse (data [2] [0], out i);
+			_damage = i;
+		}
 		/// <summary>
 		/// Projectiles will move when they update
 		/// </summary>

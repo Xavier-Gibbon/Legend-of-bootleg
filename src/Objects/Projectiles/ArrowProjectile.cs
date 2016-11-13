@@ -8,6 +8,8 @@ namespace MyGame
 		{
 		}
 
+		public ArrowProjectile () { }
+
 		/// <summary>
 		/// Arrows will always be able to be deleted
 		/// </summary>

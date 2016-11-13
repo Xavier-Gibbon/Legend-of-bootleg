@@ -9,6 +9,7 @@ namespace MyGame
 		{
 		}
 
+		public Sword () : this ("sword") { }
 		/// <summary>
 		/// When the sword is used, it creates a sword projectile
 		/// </summary>

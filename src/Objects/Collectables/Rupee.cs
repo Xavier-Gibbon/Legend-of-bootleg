@@ -3,15 +3,14 @@ namespace MyGame
 {
 	public class Rupee : Collectable
 	{
-		private int _value;
 		public Rupee (string bmp, string anim, int x, int y, int value)
-			: base(bmp, anim, x, y)
+			: base(bmp, anim, x, y, value)
 		{
-			_value = value;
 		}
 
 		public Rupee (int x, int y, int value) : this ("rupee" + value, "spriteAnimation", x, y, value) { }
 
+		public Rupee () { }
 		/// <summary>
 		/// The rupee will increase the player's rupee count by its value
 		/// </summary>

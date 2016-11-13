@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using SwinGameSDK;
 namespace MyGame
 {
 	public abstract class Enemy : GameObject
 	{
+		public static int EnemyID;
+
 		protected int _health;
 		protected int _damage;
 		protected Direction _forcedDirect;
@@ -28,6 +31,38 @@ namespace MyGame
 			_damage = damage;
 			_moveTimer.Start ();
 			_moveTimerLimit = SwinGame.Rnd (1500) + 500;
+		}
+
+		public Enemy () 
+		{
+			_moveTimer.Start ();
+			_moveTimerLimit = SwinGame.Rnd (1500) + 500;
+		}
+
+		public override void Save (MySqlConnector theConnector)
+		{
+			base.Save (theConnector);
+
+			string command = "insert into Enemy (EnemyID, ObjectID, Health, Damage) values (" + EnemyID + ", " + ObjectID + ", " + _health + ", " + _damage + ");";
+
+			theConnector.NonQuery (command);
+			EnemyID++;
+		}
+
+		public override void Load (MySqlConnector theConnector, int ObjectID)
+		{
+			base.Load (theConnector, ObjectID);
+
+			string command = "select * from Enemy where ObjectID = " + ObjectID + ";";
+			List<List<string>> data = theConnector.Select (command);
+
+			int i;
+
+			int.TryParse (data [2] [0], out i);
+			_health = i;
+
+			int.TryParse (data [3] [0], out i);
+			_damage = i;
 		}
 
 		/// <summary>

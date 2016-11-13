@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SwinGameSDK;
 namespace MyGame
 {
@@ -8,6 +9,7 @@ namespace MyGame
 		protected Direction _direct;
 		protected SpriteState _state;
 		protected int _speed;
+		public static int ObjectID;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="T:MyGame.GameObject"/> class.
@@ -29,6 +31,47 @@ namespace MyGame
 		}
 		public GameObject (string bmp, string anim, Direction direct, int x, int y, int speed, SpriteState state)
 			: this (SwinGame.BitmapNamed (bmp), SwinGame.AnimationScriptNamed (anim), direct, x, y, speed, state) { }
+
+		protected GameObject () { }
+
+
+		public static GameObject CreateObject (string type)
+		{
+			return (GameObject)Activator.CreateInstance (Type.GetType(type));
+		}
+
+		public virtual void Save (MySqlConnector theConnector)
+		{
+			string command = "insert into Object (ObjectID, ScreenID, BitmapName, AnimationScriptName, PositionX, PositionY, Direction, Speed, State, ObjectType) " + 
+				"values (" + ObjectID + ", " + Screen.ScreenID + ", '" + SwinGame.BitmapName(_sprite.LayerAtIdx(0)) + "', 'spriteAnimation', " + _sprite.X + ", " + _sprite.Y + ", " + (int)_direct + ", '" + _speed + "', '" + (int)_state + "', '" + GetType() + "');";
+
+			theConnector.NonQuery (command);
+		}
+
+		public virtual void Load (MySqlConnector theConnector, int ObjectID)
+		{
+			string command = "select * from object where ObjectID = " + ObjectID + ";";
+			List<List<string>> data = theConnector.Select (command);
+
+			_sprite = new Sprite (SwinGame.BitmapNamed (data [2] [0]), SwinGame.AnimationScriptNamed (data [3] [0]));
+
+			int i;
+
+			int.TryParse (data [4] [0], out i);
+			_sprite.X = i;
+
+			int.TryParse (data [5] [0], out i);
+			_sprite.Y = i;
+
+			int.TryParse (data [6] [0], out i);
+			_direct = (Direction)i;
+
+			int.TryParse (data [7] [0], out i);
+			_speed = i;
+
+			int.TryParse (data [8] [0], out i);
+			_state = (SpriteState)i;
+		}
 
 		/// <summary>
 		/// Moves the object in the specified direction

@@ -11,6 +11,7 @@ namespace MyGame
 			_used = false;
 		}
 
+		public Potion () : this ("potion") { }
 		/// <summary>
 		/// The potion will increase the players health, but only if it hasn't been used up yet
 		/// </summary>

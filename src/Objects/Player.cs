@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using SwinGameSDK;
 namespace MyGame
 {
 	public class Player : GameObject
 	{
+		public static int PlayerID;
+
 		private int _maxHealth;
 		private int _currentHealth;
 		private int _rupeeCount;
@@ -25,6 +28,75 @@ namespace MyGame
 		}
 
 		public Player (int x, int y, Screen firstScreen) : this (x, y, 6, 6, SpriteState.Stationary, "link", "spriteAnimation", firstScreen, 0) { }
+
+		public Player () { }
+
+		public override void Save (MySqlConnector theConnector)
+		{
+			base.Save (theConnector);
+
+			string command = "Insert into Player (PlayerID, ObjectID, CurrentHealth, MaxHealth, RupeeCount) values (" + PlayerID + ", " + ObjectID + ", " + _currentHealth + ", " + _maxHealth + ", " + _rupeeCount + ");";
+
+			theConnector.NonQuery (command);
+
+			for (int i = 0; i < _inventory.Count (); i++) {
+				_inventory.FetchItem (i).Save(theConnector);
+
+				command = "insert into PlayerInventory (PlayerID, ItemID, EquippedSlot) values (" + PlayerID + ", " + Item.ItemID + ", ";
+				if (_equippedItem1 == _inventory.FetchItem (i)) {
+					command += "1";
+				} else if (_equippedItem2 == _inventory.FetchItem (i)) {
+					command += "2";
+				} else {
+					command += "0";
+				}
+
+				command += ");";
+
+				theConnector.NonQuery (command);
+				Item.ItemID++;
+			}
+
+			PlayerID++;
+		}
+
+		public override void Load (MySqlConnector theConnector, int ObjectID)
+		{
+			base.Load (theConnector, ObjectID);
+
+			string command = "select * from Player where ObjectID = " + ObjectID + ";";
+			List<List<string>> data = theConnector.Select (command);
+
+
+			int i;
+
+			int.TryParse (data [2] [0], out i);
+			_currentHealth = i;
+
+			int.TryParse (data [3] [0], out i);
+			_maxHealth = i;
+
+			int.TryParse (data [4] [0], out i);
+			_rupeeCount = i;
+		}
+
+		public void LoadItems (MySqlConnector theConnector)
+		{
+			string command = "select * from PlayerInventory natural join Item;";
+			List<List<string>> data = theConnector.Select (command);
+
+			for (int i = 0; i < data [0].Count; i++) {
+				Item theItem = Item.CreateItem (data [3] [i]);
+
+				_inventory.AddItem (theItem);
+
+				if (data [2] [i] == "1") {
+					EquipFirstItem (theItem as ICanBeUsed);
+				} else if (data [2] [i] == "2") {
+					EquipSecondItem (theItem as ICanBeUsed);
+				}
+			}
+		}
 
 		/// <summary>
 		/// Uses the first equipped item

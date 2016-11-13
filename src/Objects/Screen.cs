@@ -5,6 +5,8 @@ namespace MyGame
 {
 	public class Screen
 	{
+		public static int ScreenID;
+
 		private Dictionary<Direction, Screen> _directions = new Dictionary<Direction, Screen>();
 		private List<GameObject> _objects = new List<GameObject> ();
 		private List<Projectile> _projectiles = new List<Projectile> ();
@@ -21,6 +23,62 @@ namespace MyGame
 			_cameraPosition.Y = yPos * 600;
 		}
 
+		public void Save (MySqlConnector theConnector)
+		{
+			string command = "insert into Screen (ScreenID, CameraPositionX, CameraPositionY, ScreenUp, ScreenDown, ScreenLeft, ScreenRight) values (" + ScreenID + ", " + _cameraPosition.X / SwinGame.ScreenWidth() + ", " + _cameraPosition.Y / SwinGame.ScreenHeight() + ", null, null, null, null);";
+
+			theConnector.NonQuery (command);
+
+			command = "Update Screen set ";
+			string value;
+
+			for (int i = 0; i <= 3; i++) {
+				if (_directions.ContainsKey((Direction)i)) {
+					value = ScreenID.ToString ();
+				} else {
+					value = "null";
+				}
+
+				command += "Screen" + ((Direction)i) + " = " + value;
+				if (i != 3) {
+					command += ", ";
+				} else {
+					command += " ";
+				}
+			}
+
+			command += "where ScreenID = " + ScreenID + ";";
+
+			theConnector.NonQuery (command);
+		
+			foreach (GameObject o in _objects) {
+				o.Save (theConnector);
+				GameObject.ObjectID++;
+			}
+
+			ScreenID++;
+		}
+
+		public void LoadObjects (MySqlConnector theConnector)
+		{
+			string command = "select * from object where ScreenID = " + ScreenID + ";";
+			List<List<string>> result = theConnector.Select (command);
+
+
+
+			for (int i = 0; i < result[0].Count; i++) {
+				GameObject o = GameObject.CreateObject (result [9] [i]);
+
+				int j;
+				int.TryParse (result [0] [i], out j);
+
+				o.Load (theConnector, j);
+
+				AddObject (o, false);
+			}
+
+			ScreenID++;
+		}
 		/// <summary>
 		/// Updates the screens objects.
 		/// Some objects will have different checks based on its type
@@ -33,7 +91,7 @@ namespace MyGame
 			}
 
 			if (_thePlayer != null) {
-				foreach (Projectile p in _projectiles) {
+ 				foreach (Projectile p in _projectiles) {
 					if (_thePlayer.CollidedWith (p)) {
 						_thePlayer.DecreaseHealth (p.Damage);
 						if (p.CanBeDeleted ()) {
@@ -85,12 +143,13 @@ namespace MyGame
 							}
 						}
 					}
-
 				}
-
-
-				FinishRemoveObjects ();
+			} else {
+				_objects [0].Move (Direction.None);
 			}
+
+
+			FinishRemoveObjects ();
 		}
 
 		/// <summary>
@@ -193,9 +252,16 @@ namespace MyGame
 				o.Draw ();
 			}
 
-			SwinGame.DrawText (_thePlayer.CurrentHealth.ToString(), Color.Red, _cameraPosition.X, _cameraPosition.Y + 20);
-			SwinGame.DrawText (_thePlayer.RupeeCount.ToString (), Color.Blue, _cameraPosition.X, _cameraPosition.Y + 40);
-			SwinGame.DrawText (_thePlayer.direct.ToString (), Color.Green, _cameraPosition.X, _cameraPosition.Y + 80);
+			if (_thePlayer != null) {
+				SwinGame.DrawText (_thePlayer.CurrentHealth.ToString (), Color.Red, _cameraPosition.X, _cameraPosition.Y + 20);
+				SwinGame.DrawText (_thePlayer.RupeeCount.ToString (), Color.Blue, _cameraPosition.X, _cameraPosition.Y + 40);
+				SwinGame.DrawText (_thePlayer.direct.ToString (), Color.Green, _cameraPosition.X, _cameraPosition.Y + 80);
+			} else {
+				SwinGame.DrawText (_objects.Count.ToString (), Color.Black, 0, 20);
+				for (int i = 0; i < _objects.Count; i++) {
+					SwinGame.DrawText (_objects [i].GetType ().ToString (), Color.Black, 0, 30 + 10 * i);
+				}
+			}
 		}
 
 		/// <summary>

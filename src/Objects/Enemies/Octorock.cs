@@ -20,6 +20,8 @@ namespace MyGame
 			}
 		}
 
+		public Octorock () { }
+
 		/// <summary>
 		/// Octorocks will only drop rupees of values 1 and 5
 		/// </summary>

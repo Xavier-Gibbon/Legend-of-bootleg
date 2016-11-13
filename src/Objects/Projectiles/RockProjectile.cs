@@ -8,6 +8,8 @@ namespace MyGame
 		{
 		}
 
+		public RockProjectile () { }
+
 		/// <summary>
 		/// The rock projectile will always be deleted
 		/// </summary>
