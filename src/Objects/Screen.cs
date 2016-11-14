@@ -15,26 +15,40 @@ namespace MyGame
 		private Player _thePlayer;
 		private List<GameObject> _toDelete = new List<GameObject> ();
 
+		private int _idNumber;
+
 		private Point2D _cameraPosition;
 
-		public Screen (int xPos, int yPos)
+		public Screen (int xPos, int yPos, int idNumber)
 		{
 			_cameraPosition.X = xPos * 800;
 			_cameraPosition.Y = yPos * 600;
+			_idNumber = idNumber;
 		}
+		public Screen (int xPos, int yPos) : this (xPos, yPos, 0) { }
 
 		public void Save (MySqlConnector theConnector)
 		{
 			string command = "insert into Screen (ScreenID, CameraPositionX, CameraPositionY, ScreenUp, ScreenDown, ScreenLeft, ScreenRight) values (" + ScreenID + ", " + _cameraPosition.X / SwinGame.ScreenWidth() + ", " + _cameraPosition.Y / SwinGame.ScreenHeight() + ", null, null, null, null);";
 
 			theConnector.NonQuery (command);
+		
+			foreach (GameObject o in _objects) {
+				o.Save (theConnector);
+				GameObject.ObjectID++;
+			}
 
-			command = "Update Screen set ";
+			ScreenID++;
+		}
+
+		public void SavePaths (MySqlConnector theConnector)
+		{
+			string command = "Update Screen set ";
 			string value;
 
 			for (int i = 0; i <= 3; i++) {
-				if (_directions.ContainsKey((Direction)i)) {
-					value = ScreenID.ToString ();
+				if (_directions.ContainsKey ((Direction)i)) {
+					value = _directions[(Direction)i]._idNumber.ToString ();
 				} else {
 					value = "null";
 				}
@@ -47,21 +61,14 @@ namespace MyGame
 				}
 			}
 
-			command += "where ScreenID = " + ScreenID + ";";
+			command += "where ScreenID = " + _idNumber + ";";
 
 			theConnector.NonQuery (command);
-		
-			foreach (GameObject o in _objects) {
-				o.Save (theConnector);
-				GameObject.ObjectID++;
-			}
-
-			ScreenID++;
 		}
 
 		public void LoadObjects (MySqlConnector theConnector)
 		{
-			string command = "select * from object where ScreenID = " + ScreenID + ";";
+			string command = "select * from object where ScreenID = " + _idNumber + ";";
 			List<List<string>> result = theConnector.Select (command);
 
 
@@ -76,8 +83,6 @@ namespace MyGame
 
 				AddObject (o, false);
 			}
-
-			ScreenID++;
 		}
 		/// <summary>
 		/// Updates the screens objects.

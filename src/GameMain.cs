@@ -19,10 +19,10 @@ namespace MyGame
 			LoadResources ();
 			//Initialize objects
 
-			myScreens.Add(new Screen (0, 0));
-			myScreens.Add(new Screen (1, 0));
-			myScreens.Add(new Screen (0, 1));
-			myScreens.Add(new Screen (1, 1));
+			myScreens.Add(new Screen (0, 0, 0));
+			myScreens.Add(new Screen (1, 0, 1));
+			myScreens.Add(new Screen (0, 1, 2));
+			myScreens.Add(new Screen (1, 1, 3));
 
 			myPlayer = new Player (400, 400, myScreens[0]);
 
@@ -78,14 +78,18 @@ namespace MyGame
 		/// <summary>
 		/// Processes the players input and performs actions based on that.
 		/// </summary>
-		/// <param name="myPlayer">The player.</param>
+		/// <param name="myMenu">The menu</param>
 		public static void ProcessEvents (Menu myMenu)
 		{
 			SwinGame.ProcessEvents ();
 			Direction tempDirect;
 
 			if (SwinGame.KeyTyped (KeyCode.EscapeKey)) {
+				SwinGame.SetCameraX (0);
+				SwinGame.SetCameraY (0);
 				myMenu.GameMenu (myPlayer);
+
+				SwinGame.SetCameraPos (myPlayer.CurrentScreen.CameraPosition);
 			}
 
 			if (SwinGame.KeyDown (KeyCode.LeftKey)) {
@@ -169,6 +173,10 @@ namespace MyGame
 						s.Save (myConnector);
 					}
 
+					foreach (Screen s in myScreens) {
+						s.SavePaths (myConnector);
+					}
+
 					myConnector.NonQuery ("commit;");
 				} catch (MySqlException ex) {
 					Console.WriteLine ("There was an error with saving the game. Exception: {0}", ex.Message);
@@ -202,20 +210,19 @@ namespace MyGame
 						int.TryParse(result [1] [i], out x);
 						int.TryParse(result [2] [i], out y);
 
-						temp.Add(new Screen (x, y));
+						temp.Add(new Screen (x, y, i));
 					}
 
 					for (int i = 0; i < myScreens.Count; i++) {
 						for (int j = 3; j < 7; j++) {
-							if (result [j] [0] != null) {
+							if (result [j] [i] != "") {
 								int k;
-								int.TryParse(result [j] [0], out k);
-								temp[i].AddNewPath (myScreens [k], (Direction)j - 3);
+								int.TryParse(result [j] [i], out k);
+								temp[i].AddNewPath (myScreens [k], (Direction)(j - 3));
 							}
 						}
 					}
 
-					Screen.ScreenID = 0;
 					foreach (Screen s in temp) {
 						s.LoadObjects (myConnector);
 					}
