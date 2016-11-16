@@ -2,15 +2,15 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug-Windows|x86" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\COS20007\Game\The Legend of Bootleg\src\GameMain.cs" line="211" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\GameMain.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\Objects\Screen.cs">
     <Files>
-      <File FileName="src\GameMain.cs" Line="221" Column="1" />
-      <File FileName="src\Objects\Screen.cs" Line="249" Column="2" />
+      <File FileName="src\GameMain.cs" Line="2" Column="21" />
+      <File FileName="src\Objects\Screen.cs" Line="257" Column="1" />
       <File FileName="src\UnitTests\TestPlayer.cs" Line="14" Column="28" />
+      <File FileName="src\Objects\GameObject.cs" Line="168" Column="17" />
+      <File FileName="src\Objects\Inventory.cs" Line="15" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.MyGameWin PreferredExecutionTarget="MonoDevelop.Default" />
